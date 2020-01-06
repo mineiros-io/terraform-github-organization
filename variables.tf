@@ -5,29 +5,15 @@ variable "blocked_users" {
 }
 
 variable "members" {
-  type = list(any)
-
-  # We can't use a detailed type specification due to a terraform limitation. However, this might be changed in a future
-  # Terraform version. See https://github.com/hashicorp/terraform/issues/19898 and https://github.com/hashicorp/terraform/issues/22449
-  #
-  # type = list(object({
-  #   username = string
-  #   role     = optional(string)
-  # }))
-  description = "A list of users to be added from your organization. When applied, an invitation will be sent to the user to become part of the organization. When destroyed, either the invitation will be cancelled or the user will be removed. Role must be one of member or admin. Defaults to member."
+  type        = list(string)
+  description = "A list of users to be added to your organization with member role. When applied, an invitation will be sent to the user to become part of the organization. When destroyed, either the invitation will be cancelled or the user will be removed."
   default     = []
+}
 
-  # Example:
-  # members = [
-  #   {
-  #     username   = "username1"
-  #     role       = "member"
-  #   },
-  #   {
-  #     username   = "username2"
-  #     role       = "admin"
-  #   }
-  # ]
+variable "admins" {
+  type        = list(string)
+  description = "A list of users to be added to your organization with admin role. When applied, an invitation will be sent to the user to become part of the organization. When destroyed, either the invitation will be cancelled or the user will be removed."
+  default     = []
 }
 
 variable "projects" {

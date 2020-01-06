@@ -11,13 +11,8 @@ module "organization" {
   source = "../.."
 
   members = [
-    {
-      username = "terraform-test-user-1"
-    },
-    {
-      username = "terraform-test-user-2"
-      role     = "member"
-    }
+    "terraform-test-user-1",
+    "terraform-test-user-2",
   ]
 
   # randomly chosen users, sorry for blocking you guys!
