@@ -28,11 +28,6 @@ func TestTerraformRepository(t *testing.T) {
 		// The path to where your Terraform code is located
 		TerraformDir: "../examples/organization",
 		Upgrade:      true,
-		// Variables to pass to our Terraform code using -var options
-		Vars: map[string]interface{}{
-			"github_token":        githubToken,
-			"github_organization": githubOrganization,
-		},
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
