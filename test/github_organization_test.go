@@ -21,7 +21,7 @@ func init() {
 	}
 }
 
-func TestTerraformRepository(t *testing.T) {
+func TestTerraformOrganization(t *testing.T) {
 	t.Parallel()
 
 	terraformOptions := &terraform.Options{
