@@ -8,12 +8,24 @@ variable "members" {
   type        = list(string)
   description = "A list of users to be added to your organization with member role. When applied, an invitation will be sent to the user to become part of the organization. When destroyed, either the invitation will be cancelled or the user will be removed."
   default     = []
+
+  # Example:
+  # members = [
+  #   "admin",
+  #   "another-admin"
+  # ]
 }
 
 variable "admins" {
   type        = list(string)
   description = "A list of users to be added to your organization with admin role. When applied, an invitation will be sent to the user to become part of the organization. When destroyed, either the invitation will be cancelled or the user will be removed."
   default     = []
+
+  # Example:
+  # admins = [
+  #   "admin",
+  #   "another-admin"
+  # ]
 }
 
 variable "projects" {
@@ -30,7 +42,7 @@ variable "projects" {
   default     = []
 
   # Example:
-  #mv  projects = [
+  # projects = [
   #   {
   #     name   = "Test Project"
   #     body   = "This is a test project created by Terraform"
