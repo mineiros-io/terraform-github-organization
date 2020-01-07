@@ -15,6 +15,10 @@ module "organization" {
     "terraform-test-user-2",
   ]
 
+  admins = [
+    "terraform-test-admin"
+  ]
+
   # randomly chosen users, sorry for blocking you guys!
   blocked_users = [
     "Testuser1",
