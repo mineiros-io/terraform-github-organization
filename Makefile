@@ -64,12 +64,12 @@ docker-run-pre-commit-hooks-from-cache: docker-load
 	docker run --rm  ${REPOSITORY_NAME}:${BUILD_VERSION} pre-commit run --all-files
 
 # run tests
-docker-run-tests: |check-env-vars-GITHUB_ORGANIZATION |check_env_vars-GITHUB_TOKEN docker-build
+docker-run-tests: |check-env-vars-GITHUB_ORGANIZATION |check-env-vars-GITHUB_TOKEN docker-build
 	docker run --rm -e GITHUB_TOKEN -e GITHUB_ORGANIZATION ${REPOSITORY_NAME}:${BUILD_VERSION} \
 	go test -v -timeout 30m test/github_organization_test.go
 
 # run tests using a cached image
-docker-run-tests-from-cache: |check-env-vars-GITHUB_ORGANIZATION |check_env_vars-GITHUB_TOKEN docker-build
+docker-run-tests-from-cache: |check-env-vars-GITHUB_ORGANIZATION |check-env-vars-GITHUB_TOKEN docker-build
 	docker run --rm -e GITHUB_TOKEn -e GITHUB_ORGANIZATION ${REPOSITORY_NAME}:${BUILD_VERSION} \
 	go test -v -timeout 30m test/github_organization_test.go
 
