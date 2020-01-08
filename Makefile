@@ -27,11 +27,11 @@ docker-load:
 	docker load < ${DOCKER_CACHE_IMAGE}
 
 # Run pre-commit hooks
-docker-run-pre-commit-hooks-from-cache: docker-build
+docker-run-pre-commit-hooks: docker-build
 	docker run --rm ${REPOSITORY_NAME}:${BUILD_VERSION} pre-commit run --all-files
 
 # Run pre-commit hooks using a cached image
-docker-run-tests-from-cache: docker-load
+docker-run-pre-commit-hooks-from-cache: docker-load
 	docker run --rm  ${REPOSITORY_NAME}:${BUILD_VERSION} pre-commit run --all-files
 
 # run tests
