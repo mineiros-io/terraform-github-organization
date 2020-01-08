@@ -46,7 +46,7 @@ docker-run-tests: docker-build
 	go test -v -timeout 30m test/github_organization_test.go
 
 # run tests using a cached image
-docker-run-tests-from-cache: docker-build
+docker-run-tests-from-cache: docker-load
 	docker run --rm \
 	-e GITHUB_TOKEn \
 	-e GITHUB_ORGANIZATION \
