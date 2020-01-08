@@ -9,6 +9,11 @@ ifndef REPOSITORY_NAME
 	REPOSITORY_NAME := terraform-github-organization
 endif
 
+ifndef DOCKER_CACHE_IMAGE
+	DOCKER_CACHE_IMAGE := ${REPOSITORY_NAME}-${BUILD_VERSION}.tar
+endif
+
+
 # builds the image
 docker-build:
 	docker build -t ${REPOSITORY_NAME}:latest -t ${REPOSITORY_NAME}:${BUILD_VERSION} .
