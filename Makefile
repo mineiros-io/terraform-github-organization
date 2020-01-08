@@ -36,11 +36,11 @@ docker-run-pre-commit-hooks-from-cache: docker-load
 
 # run tests
 docker-run-tests: docker-build
-	docker run --rm  ${REPOSITORY_NAME}:${BUILD_VERSION} go test .
+	docker run --rm -e GITHUB_TOKEN=${GITHUB_TOKEN} -e GITHUB_ORGANIZATION=${GITHUB_ORGANIZATION} ${REPOSITORY_NAME}:${BUILD_VERSION} go test -v -timeout 30m test/github_team_test.go
 
 # run tests using a cached image
 docker-run-tests-from-cache: docker-load
-	docker run --rm  ${REPOSITORY_NAME}:${BUILD_VERSION} go test .
+	docker run --rm -e GITHUB_TOKEN=${GITHUB_TOKEN} -e GITHUB_ORGANIZATION=${GITHUB_ORGANIZATION} ${REPOSITORY_NAME}:${BUILD_VERSION} go test -v -timeout 30m test/github_team_test.go
 
 
 .PHONY: docker-build
