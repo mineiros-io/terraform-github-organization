@@ -59,7 +59,7 @@ This module uses https://github.com/terraform-providers/terraform-provider-githu
 
 [source,hcl]
 ----
-module "cdn" {
+module "organization" {
   source           = "git::git::git@github.com:mineiros-io/terraform-github-organization.git?ref=master"
 
   members = [
