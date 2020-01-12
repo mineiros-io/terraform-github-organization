@@ -15,13 +15,13 @@ module "organization" {
   ]
 
   admins = [
-    "terraform-test-admin"
+    "terraform-test-admin",
   ]
 
   # randomly chosen users, sorry for blocking you guys!
   blocked_users = [
     "Testuser1",
-    "Testuser2"
+    "Testuser2",
   ]
 
   projects = [
@@ -30,6 +30,7 @@ module "organization" {
       body = "This is a test project created by Terraform"
     },
     {
+      id   = "project-without-body"
       name = "Test Project without a body"
     }
   ]
