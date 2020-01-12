@@ -31,36 +31,40 @@ It needs to be configured with the proper credentials before it can be used and 
 
 [TIP]
 ====
-This Module uses `For, For-Each and Dynamic Nested Blocks` that were introduced in Terraform 0.12. A common problem in Terraform configurations for versions 0.11 and earlier is dealing with situations where the number of values or resources is decided by a dynamic expression rather than a fixed count.
+This Module uses `For, For-Each and Dynamic Nested Blocks` that were introduced in Terraform 0.12.
+A common problem in Terraform configurations for versions 0.11 and earlier is dealing with situations where the number of values or resources is decided by a dynamic expression rather than a fixed count.
 
 You can now dynamically add and remove items from and to Lists without the necessity to render the whole list of resources again.
 Terraform will only add and remove the items you want it to.
 ====
 
 == Table of Contents
-
 toc::[]
 
 == Requirements
-
-* Terraform `~> 0.12.9`
+* Terraform `~> 0.12.9` - for full resource `for_each` support
 * Terraform GitHub provider `~> 2.2`
 
 == Features
+This module uses https://github.com/terraform-providers/terraform-provider-github/releases[Terraform GitHub provider v2.2.x] that supports the following resources:
 
-This module uses https://github.com/terraform-providers/terraform-provider-github/releases[Terraform GitHub provider v2.2.1] that supports the following resources:
+=== Standard github provider features
+* :heavy_check_mark: Organization Members
+* :heavy_check_mark: Organization Owners (Admins)
+* :heavy_check_mark: Organization Projects
+* :heavy_check_mark: Blocked Users
+* :x: Organization Webhooks (not yet implemented)
 
-* Members
-* Projects
-* Blocked Users
-* Webhooks
+=== Additional module features
+* :heavy_check_mark: Change organization member roles without removing and re-inviting users
+* :heavy_check_mark: Rename projects without recreating (when providing unique ids)
+* :heavy_check_mark: No need to import members/admins on first run
 
 == Usage
-
 [source,hcl]
 ----
 module "organization" {
-  source           = "git::git::git@github.com:mineiros-io/terraform-github-organization.git?ref=master"
+  source = "git::git::git@github.com:mineiros-io/terraform-github-organization.git?ref=master"
 
   members = [
     "a-user",
@@ -68,16 +72,17 @@ module "organization" {
   ]
 
   admins = [
-    "a-admin"
+    "a-admin",
   ]
 
   blocked_users = [
     "blocked-user",
-    "another-blocked-user"
+    "another-blocked-user",
   ]
 
   projects = [
     {
+      id   = "project-a"
       name = "A Great Project"
       body = "This is a project created by Terraform"
     }
@@ -87,12 +92,11 @@ module "organization" {
 
 [TIP]
 ====
-In a production environment you most likely want to stick to a specific version of this module instead of the master
+Note for 0.0.x versions: in a production environment you most likely want to stick to a specific version of this module instead of the master
 branch (e.g. ?ref=v0.0.1), because there may be breaking changes between releases.
 ====
 
 === Examples
-
 For a complete example please see link:/examples[examples] directory.
 
 === Tests
@@ -105,7 +109,7 @@ Execute all pre-commit hooks with Docker:
 make docker-run-pre-commit-hooks
 ----
 
-Execute the Unit Test (deploy und undeploy the example):
+Execute the Unit Test (deploy and undeploy the example):
 [source,shell script]
 ----
 GITHUB_ORGANIZATION=YOUR_GITHUB_ORGANIZATION \
@@ -113,11 +117,8 @@ GITHUB_TOKEN=YOUR_GITHUB_TOKEN \
 make docker-run-tests
 ----
 
-
 == Limitations
-
 - Currently the https://www.terraform.io/docs/providers/github/index.html[GitHub Provider] doesn't support to provision new organizations.
-
 
 //:sourcedir: examples/organization
 //
