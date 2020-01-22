@@ -43,7 +43,7 @@ toc::[]
 
 == Requirements
 * Terraform `~> 0.12.9` - for full resource `for_each` support
-* Terraform GitHub provider `~> 2.2`
+* Terraform GitHub provider `~> 2.3`
 
 == Features
 This module uses https://github.com/terraform-providers/terraform-provider-github/releases[Terraform GitHub provider v2.2.x] that supports the following resources:
