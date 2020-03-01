@@ -1,9 +1,10 @@
 package test
 
 import (
-	"github.com/gruntwork-io/terratest/modules/terraform"
 	"os"
 	"testing"
+
+	"github.com/gruntwork-io/terratest/modules/terraform"
 )
 
 var githubOrganization, githubToken string
