@@ -1,4 +1,3 @@
-
 # ---------------------------------------------------------------------------------------------------------------------
 # ENVIRONMENT VARIABLES
 # Define these secrets as environment variables.
