@@ -1,31 +1,60 @@
+# ---------------------------------------------------------------------------------------------------------------------
+# ENVIRONMENT VARIABLES
+# Define these secrets as environment variables.
+# ---------------------------------------------------------------------------------------------------------------------
+
+# GITHUB_ORGANIZATION
+# GITHUB_TOKEN
+
+# ---------------------------------------------------------------------------------------------------------------------
+# REQUIRED VARIABLES
+# These variables must be set when using this module.
+# ---------------------------------------------------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------------------------------------------------
+# OPTIONAL VARIABLES
+# These variables have defaults, but may be overridden.
+# ---------------------------------------------------------------------------------------------------------------------
+
 variable "blocked_users" {
   type        = set(string)
   description = "A list of usernames to be blocked from a GitHub organization."
-  default     = []
+
+  # Example:
+  #
+  # blocked_users = [
+  #   "blocked-user"
+  # ]
+
+  default = []
 }
 
 variable "members" {
-  type        = list(string)
+  type        = set(string)
   description = "A list of users to be added to your organization with member role. When applied, an invitation will be sent to the user to become part of the organization. When destroyed, either the invitation will be cancelled or the user will be removed."
-  default     = []
 
   # Example:
+  #
   # members = [
   #   "admin",
   #   "another-admin"
   # ]
+
+  default = []
 }
 
 variable "admins" {
-  type        = list(string)
+  type        = set(string)
   description = "A list of users to be added to your organization with admin role. When applied, an invitation will be sent to the user to become part of the organization. When destroyed, either the invitation will be cancelled or the user will be removed."
-  default     = []
 
   # Example:
+  #
   # admins = [
   #   "admin",
   #   "another-admin"
   # ]
+
+  default = []
 }
 
 variable "projects" {
@@ -39,9 +68,9 @@ variable "projects" {
   #   body = optional(string)
   # }))
   description = "Create and manage projects for the GitHub organization."
-  default     = []
 
   # Example:
+  #
   # projects = [
   #   {
   #     name   = "Test Project"
@@ -51,4 +80,6 @@ variable "projects" {
   #     name   = "Test Project without a body"
   #   }
   # ]
+
+  default = []
 }
