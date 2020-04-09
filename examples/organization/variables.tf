@@ -24,6 +24,12 @@ variable "admins" {
   ]
 }
 
+variable "all_members_team_name" {
+  description = "The name of the team that contains all members of the organization."
+  type        = string
+  default     = "everyone"
+}
+
 variable "blocked_users" {
   description = "A list of users that should be blocked by the organization."
   type        = set(string)
@@ -33,6 +39,12 @@ variable "blocked_users" {
     "Testuser1",
     "Testuser2",
   ]
+}
+
+variable "create_all_members_team" {
+  description = "Whether or not to create a team that contains all users of the organization. The teams name can be set through the all_members_team_name"
+  type        = bool
+  default     = true
 }
 
 variable "members" {

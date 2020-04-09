@@ -30,6 +30,7 @@ module "organization" {
   source  = "mineiros-io/organization/github"
   version = "0.0.5"
 
+  create_all_members_team = true
 
   members = [
     "a-user",
@@ -72,6 +73,7 @@ module "organization" {
 1. Change organization member roles without removing and re-inviting users
 1. Rename projects without recreating (when providing unique ids)
 1. No need to import members/admins on first run
+1. Create an all member team that contains every member of your organization
 
 ## Limitations
 - Currently the [GitHub Provider](https://www.terraform.io/docs/providers/github/index.html) doesn't support to
