@@ -19,13 +19,7 @@
 variable "all_members_team_name" {
   description = "The name of the team that contains all members of the organization."
   type        = string
-  default     = "all"
-}
-
-variable "create_all_members_team" {
-  description = "Whether or not to create a team that contains all users of the organization. The teams name can be set through the all_members_team_name"
-  type        = bool
-  default     = false
+  default     = null
 }
 
 variable "blocked_users" {

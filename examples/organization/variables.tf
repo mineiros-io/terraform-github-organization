@@ -41,12 +41,6 @@ variable "blocked_users" {
   ]
 }
 
-variable "create_all_members_team" {
-  description = "Whether or not to create a team that contains all users of the organization. The teams name can be set through the all_members_team_name"
-  type        = bool
-  default     = true
-}
-
 variable "members" {
   description = "A list of members to add to the organization."
   type        = set(string)

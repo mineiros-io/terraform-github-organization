@@ -40,7 +40,7 @@ resource "github_organization_project" "project" {
 }
 
 resource "github_team" "all" {
-  count = var.create_all_members_team ? 1 : 0
+  count = var.all_members_team_name != null ? 1 : 0
 
   name        = var.all_members_team_name
   description = "This teams contains all members of our organization."
@@ -48,7 +48,7 @@ resource "github_team" "all" {
 }
 
 resource "github_team_membership" "all" {
-  for_each = var.create_all_members_team ? local.memberships : {}
+  for_each = var.all_members_team_name != null ? local.memberships : {}
 
   team_id  = github_team.all[0].id
   username = each.key
