@@ -44,7 +44,7 @@ resource "github_team" "all" {
 
   name        = var.all_members_team_name
   description = "This teams contains all members of our organization."
-  privacy     = "closed"
+  privacy     = var.all_members_team_visibility
 }
 
 resource "github_team_membership" "all" {

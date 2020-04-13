@@ -22,6 +22,12 @@ variable "all_members_team_name" {
   default     = null
 }
 
+variable "all_members_team_visibility" {
+  description = "The level of privacy for the team. Must be one of `secret` or `closed`."
+  type        = string
+  default     = "secret"
+}
+
 variable "blocked_users" {
   type        = set(string)
   description = "A list of usernames to be blocked from a GitHub organization."
