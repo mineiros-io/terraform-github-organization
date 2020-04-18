@@ -24,6 +24,18 @@ variable "admins" {
   ]
 }
 
+variable "all_members_team_name" {
+  description = "The name of the team that contains all members of the organization."
+  type        = string
+  default     = "everyone"
+}
+
+variable "all_members_team_visibility" {
+  description = "The level of privacy for the team. Must be one of `secret` or `closed`."
+  type        = string
+  default     = "secret"
+}
+
 variable "blocked_users" {
   description = "A list of users that should be blocked by the organization."
   type        = set(string)

@@ -16,6 +16,18 @@
 # These variables have defaults, but may be overridden.
 # ---------------------------------------------------------------------------------------------------------------------
 
+variable "all_members_team_name" {
+  description = "The name of the team that contains all members of the organization."
+  type        = string
+  default     = null
+}
+
+variable "all_members_team_visibility" {
+  description = "The level of privacy for the team. Must be one of `secret` or `closed`."
+  type        = string
+  default     = "secret"
+}
+
 variable "blocked_users" {
   type        = set(string)
   description = "A list of usernames to be blocked from a GitHub organization."

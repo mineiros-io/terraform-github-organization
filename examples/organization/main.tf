@@ -20,8 +20,10 @@ provider "github" {
 module "organization" {
   source = "../.."
 
-  members       = var.members
-  admins        = var.admins
-  blocked_users = var.blocked_users
-  projects      = var.projects
+  all_members_team_name       = var.all_members_team_name
+  all_members_team_visibility = "closed"
+  members                     = var.members
+  admins                      = var.admins
+  blocked_users               = var.blocked_users
+  projects                    = var.projects
 }
