@@ -1,11 +1,10 @@
-<img src="https://i.imgur.com/t8IkKoZl.png" width="200"/>
+[<img src="https://raw.githubusercontent.com/mineiros-io/brand/master/mineiros-primary-logo.svg" width="400"/>](https://mineiros.io/?ref=terraform-github-organization)
 
-[![Maintained by Mineiros.io](https://img.shields.io/badge/maintained%20by-mineiros.io-00607c.svg)](https://www.mineiros.io/ref=repo_terraform-github-organization)
 [![Build Status](https://mineiros.semaphoreci.com/badges/terraform-github-organization/branches/master.svg?style=shields)](https://mineiros.semaphoreci.com/projects/terraform-github-organization)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-github-organization.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-github-organization/releases)
-[![Terraform Version](https://img.shields.io/badge/terraform-~%3E%200.12.9-brightgreen.svg)](https://github.com/hashicorp/terraform/releases)
-[![Github Provider Version](https://img.shields.io/badge/github--provider-%3E%3D%202.3.1-brightgreen.svg)](https://github.com/terraform-providers/terraform-provider-github/releases)
-[![License](https://img.shields.io/badge/License-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
+[![license](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Terraform Version](https://img.shields.io/badge/terraform-~%3E%200.12.20-623CE4.svg)](https://github.com/hashicorp/terraform/releases)
+[<img src="https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack">](https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg)
 
 A Terraform module that acts as a wrapper around the Terraform
 [GitHub provider](https://www.terraform.io/docs/providers/github/index.html) and offers a more convenient and tested way
@@ -14,11 +13,12 @@ A Terraform module that acts as a wrapper around the Terraform
 - [Getting Started](#getting-started)
 - [Module Features](#module-features)
 - [Limitations](#limitations)
-- [Makefile](#makefile)
 - [Module Versioning](#module-versioning)
+  - [Backwards compatibility in `0.0.z` and `0.y.z` version](#backwards-compatibility-in-00z-and-0yz-version)
 - [About Mineiros](#about-mineiros)
 - [Reporting Issues](#reporting-issues)
 - [Contributing](#contributing)
+- [Makefile Targets](#makefile-targets)
 - [License](#license)
 
 ## Getting Started
@@ -63,61 +63,74 @@ module "organization" {
 > resources again. Terraform will only add and remove the items you want it to.
 
 ## Module Features
+
 **Standard github provider features:**
+
 1. Organization Members
 1. Organization Owners (Admins)
 1. Organization Projects
 1. Blocked Users
 
 **Additional module features:**
+
 1. Change organization member roles without removing and re-inviting users
 1. Rename projects without recreating (when providing unique ids)
 1. No need to import members/admins on first run
 1. Create an all member team that contains every member of your organization
 
 ## Limitations
+
 - Currently the [GitHub Provider](https://www.terraform.io/docs/providers/github/index.html) doesn't support to
   provision new organizations.
 
-## Makefile
-This repository comes with a handy [https://github.com/mineiros-io/terraform-module-template/blob/master/Makefile](Makefile).
-Run `make help` to see details on each available target.
-
 ## Module Versioning
+
 This Module follows the principles of [Semantic Versioning (SemVer)](https://semver.org/).
 
-Given a version number `MAJOR.MINOR.PATCH`, we increment the:
-1) `MAJOR` version when we make incompatible changes,
-2) `MINOR` version when we add functionality in a backwards compatible manner, and
-3) `PATCH` version when we make backwards compatible bug fixes.
+Using the given version number of `MAJOR.MINOR.PATCH`, we apply the following constructs:
+
+1. Use the `MAJOR` version for incompatible changes.
+1. Use the `MINOR` version when adding functionality in a backwards compatible manner.
+1. Use the `PATCH` version when introducing backwards compatible bug fixes.
 
 ### Backwards compatibility in `0.0.z` and `0.y.z` version
-- Backwards compatibility in versions `0.0.z` is **not guaranteed** when `z` is increased. (Initial development)
-- Backwards compatibility in versions `0.y.z` is **not guaranteed** when `y` is increased. (Pre-release)
+
+- In the context of initial development, backwards compatibility in versions `0.0.z` is **not guaranteed** when `z` is
+  increased. (Initial development)
+- In the context of pre-release, backwards compatibility in versions `0.y.z` is **not guaranteed** when `y` is
+  increased. (Pre-release)
 
 ## About Mineiros
-Mineiros is a [DevOps as a Service](https://mineiros.io/) Company based in Berlin, Germany.
-We offer Commercial Support for all of our projects, just send us an email to [hello@mineiros.io](mailto:hello@mineiros.io).
+
+Mineiros is a [DevOps as a Service](https://mineiros.io/?ref=terraform-github-organization) company based in Berlin, Germany. We offer commercial support
+for all of our projects and encourage you to reach out if you have any questions or need help.
+Feel free to send us an email at [hello@mineiros.io](mailto:hello@mineiros.io).
 
 We can also help you with:
-- Terraform Modules for all types of infrastructure such as VPC's, Docker clusters,
-databases, logging and monitoring, CI, etc.
-- Complex Cloud- and Multi Cloud environments.
-- Consulting & Training on AWS, Terraform and DevOps.
+
+- Terraform modules for all types of infrastructure such as VPCs, Docker clusters, databases, logging and monitoring, CI, etc.
+- Consulting & training on AWS, Terraform and DevOps
 
 ## Reporting Issues
-We use GitHub [Issues](https://github.com/mineiros-io/terraform-github-repository/issues) to track community reported issues and missing features.
+
+We use GitHub [Issues](https://github.com/mineiros-io/terraform-github-organization/issues)
+to track community reported issues and missing features.
 
 ## Contributing
-Contributions are very welcome!
-We use [Pull Requests](https://github.com/mineiros-io/terraform-github-repository/pulls)
-for accepting changes.
-Please see our
-[Contribution Guidelines](https://github.com/mineiros-io/terraform-github-repository/blob/master/CONTRIBUTING.md)
-for full details.
+
+Contributions are always encouraged and welcome! For the process of accepting changes, we use
+[Pull Requests](https://github.com/mineiros-io/terraform-github-organization/pulls). If you'd like more information, please
+see our [Contribution Guidelines](https://github.com/mineiros-io/terraform-github-organization/blob/master/CONTRIBUTING.md).
+
+## Makefile Targets
+
+This repository comes with a handy
+[Makefile](https://github.com/mineiros-io/terraform-github-organization/blob/master/Makefile).
+Run `make help` to see details on each available target.
 
 ## License
-This module is licensed under the Apache License Version 2.0, January 2004.
-Please see [LICENSE](https://github.com/mineiros-io/terraform-github-repository/blob/master/LICENSE) for full details.
 
-Copyright &copy; 2020 Mineiros
+This module is licensed under the Apache License Version 2.0, January 2004.
+Please see [LICENSE](https://github.com/mineiros-io/terraform-github-organization/blob/master/LICENSE) for full details.
+
+Copyright &copy; 2020 Mineiros GmbH
