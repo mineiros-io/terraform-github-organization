@@ -58,7 +58,7 @@ variable "members" {
 
 variable "projects" {
   description = "A list of projects to add to the organization."
-  type        = list(any)
+  type        = any
   default = [
     {
       name = "Test Project"
