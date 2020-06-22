@@ -5,25 +5,52 @@
 #   - manage memberships ( admins and members )
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# ---------------------------------------------------------------------------------------------------------------------
-# SET TERRAFORM AND PROVIDER REQUIREMENTS FOR RUNNING THIS MODULE
-# ---------------------------------------------------------------------------------------------------------------------
+module "organization" {
+  source  = "mineiros-io/organization/github"
+  version = "0.1.4"
 
-terraform {
-  required_version = "~> 0.12.9"
+  all_members_team_name       = "everyone"
+  all_members_team_visibility = "closed"
+
+  members = [
+    "terraform-test-user-1",
+    "terraform-test-user-2",
+  ]
+
+  admins = [
+    "terraform-test-admin",
+  ]
+
+  # randomly chosen users, sorry for blocking you guys!
+  blocked_users = [
+    "Testuser1",
+    "Testuser2",
+  ]
+
+  projects = [
+    {
+      name = "Test Project"
+      body = "This is a test project created by Terraform"
+    },
+    {
+      name = "Test Project without a body"
+    }
+  ]
 }
+
+# ------------------------------------------------------------------------------
+# EXAMPLE PROVIDER CONFIGURATION
+# ------------------------------------------------------------------------------
 
 provider "github" {
-  version = "~> 2.4"
+  version = "~> 2.6"
 }
 
-module "organization" {
-  source = "../.."
-
-  all_members_team_name       = var.all_members_team_name
-  all_members_team_visibility = "closed"
-  members                     = var.members
-  admins                      = var.admins
-  blocked_users               = var.blocked_users
-  projects                    = var.projects
-}
+# ------------------------------------------------------------------------------
+# ENVIRONMENT VARIABLES:
+# ------------------------------------------------------------------------------
+# You can provide your credentials via the
+#   GITHUB_TOKEN and
+#   GITHUB_ORGANZIATION, environment variables,
+# representing your Access Token and the organization, respectively.
+# ------------------------------------------------------------------------------

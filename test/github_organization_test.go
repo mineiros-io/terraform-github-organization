@@ -54,7 +54,7 @@ func TestGithubOrganization(t *testing.T) {
 
 	terraformOptions := &terraform.Options{
 		// The path to where your Terraform code is located
-		TerraformDir: "../examples/organization",
+		TerraformDir: "organization",
 		Upgrade:      true,
 		Vars: map[string]interface{}{
 			"blocked_users": expectedBlockedUsers,
