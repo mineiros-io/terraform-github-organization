@@ -1,5 +1,18 @@
+# ------------------------------------------------------------------------------
+# OUTPUT CALCULATED VARIABLES (prefer full objects)
+# ------------------------------------------------------------------------------
+
+output "all_members_team" {
+  description = "The outputs of the all members team that contains all members of your organization."
+  value       = try(github_team.all[0], {})
+}
+
+# ------------------------------------------------------------------------------
+# OUTPUT ALL RESOURCES AS FULL OBJECTS
+# ------------------------------------------------------------------------------
+
 output "blocked_users" {
-  description = "A list of users that are blocked by the organiation."
+  description = "The list of users that are blocked by the organiation."
   value       = github_organization_block.blocked_user
 }
 
@@ -13,7 +26,10 @@ output "projects" {
   value       = github_organization_project.project
 }
 
-output "all_members_team" {
-  description = "The outputs of the all members team that contains all members of your organization."
-  value       = try(github_team.all[0], {})
-}
+# ------------------------------------------------------------------------------
+# OUTPUT ALL INPUT VARIABLES
+# ------------------------------------------------------------------------------
+
+# ------------------------------------------------------------------------------
+# OUTPUT MODULE CONFIGURATION
+# ------------------------------------------------------------------------------
