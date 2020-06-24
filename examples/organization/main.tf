@@ -5,6 +5,24 @@
 #   - manage memberships ( admins and members )
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# ---------------------------------------------------------------------------------------------------------------------
+# ENVIRONMENT VARIABLES:
+# ---------------------------------------------------------------------------------------------------------------------
+# You can provide your credentials via the
+#   GITHUB_TOKEN and
+#   GITHUB_ORGANIZATION, environment variables,
+# representing your Access Token and the organization, respectively.
+# ---------------------------------------------------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------------------------------------------------
+# EXAMPLE PROVIDER CONFIGURATION
+# ---------------------------------------------------------------------------------------------------------------------
+
+provider "github" {
+  version      = "~> 2.6"
+  organization = "example-organization"
+}
+
 module "organization" {
   source  = "mineiros-io/organization/github"
   version = "0.1.4"
@@ -38,19 +56,3 @@ module "organization" {
   ]
 }
 
-# ------------------------------------------------------------------------------
-# EXAMPLE PROVIDER CONFIGURATION
-# ------------------------------------------------------------------------------
-
-provider "github" {
-  version = "~> 2.6"
-}
-
-# ------------------------------------------------------------------------------
-# ENVIRONMENT VARIABLES:
-# ------------------------------------------------------------------------------
-# You can provide your credentials via the
-#   GITHUB_TOKEN and
-#   GITHUB_ORGANZIATION, environment variables,
-# representing your Access Token and the organization, respectively.
-# ------------------------------------------------------------------------------

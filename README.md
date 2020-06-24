@@ -16,8 +16,6 @@ A Terraform module that acts as a wrapper around the Terraform
 - [Getting Started](#getting-started)
 - [Module Argument Reference](#module-argument-reference)
   - [Top-level Arguments](#top-level-arguments)
-    - [Main Resource Configuration](#main-resource-configuration)
-    - [Extended Resource Configuration](#extended-resource-configuration)
 - [Module Attributes Reference](#module-attributes-reference)
 - [External Documentation](#external-documentation)
 - [Module Versioning](#module-versioning)
@@ -85,9 +83,38 @@ See [variables.tf] and [examples/] for details and use-cases.
 
 ### Top-level Arguments
 
-#### Main Resource Configuration
+- **`blocked_users`**: *(Optional `set(string)`)*
 
-#### Extended Resource Configuration
+  A list of usernames to be blocked from a GitHub organization.
+  Default is `[]`.
+
+- **`members`**: *(Optional `set(string)`)*
+
+  A list of users to be added to your organization with member role.
+  When applied, an invitation will be sent to the user to become part of the organization.
+  When destroyed, either the invitation will be cancelled or the user will be removed.
+  Default is `[]`.
+
+- **`admins`**: *(Optional `set(string)`)*
+
+  A list of users to be added to your organization with admin role.
+  When applied, an invitation will be sent to the user to become part of the organization.
+  When destroyed, either the invitation will be cancelled or the user will be removed.
+  Default is `[]`.
+
+- **`projects`**: *(Optional `list(project)`)*
+  Create and manage projects for the GitHub organization.
+  Default is `[]`.
+
+- **`all_members_team_name`**: *(Optional `string`)*
+
+  The name of the team that contains all members of the organization.
+  Default is `null`.
+
+- **`all_members_team_visibility`**: *(Optional `string`)*
+
+  The level of privacy for the team. Must be one of `secret` or `closed`.
+  Default is `secret`.
 
 ## Module Attributes Reference
 
@@ -97,13 +124,25 @@ The following attributes are exported by the module:
 
   Whether this module is enabled.
 
-- **`output_1`**
+- **`blocked_users`**
 
-  The full `resource` object with all its attributes.
+  A list of `github_organization_block` resource objects
+  that describe all users that are blocked by the organization.
+
+- **`memberships`**
+
+  A list of `github_membership` resource objects that describe
+  all members of the organization.
+
+- **`projects`**
+
+  A list of `github_organization_project` resource objects that
+  describe all projects of the organization.
 
 ## External Documentation
 
-- Terraform Github Provider Documentation:
+- Terraform Github Provider Documentation: 
+   - https://www.terraform.io/docs/providers/github/index.html
 
 ## Module Versioning
 
