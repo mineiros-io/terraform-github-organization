@@ -1,0 +1,56 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+### Added
+- Add `CHANGELOG.md`.
+### Changed
+- Switch CI from SemaphoreCI to GitHub Actions.
+
+## [0.1.3] - 2020-05-13
+### Added
+- Work around a terraform issue in `module_depends_on` argument.
+
+## [0.1.2] - 2020-05-05
+### Change
+- New format for README.md and LICENSE.
+- Bump pre-commit hooks to v 0.1.4 and add new hooks.
+- Bump build-tools to v0.5.3.
+
+## [0.1.1] - 2020-04-18
+### Added
+- Introduce new variables `all_members_team_name` and `all_members_team_visibility`
+  for adding the possibility to create a team which contains all members of your organization.
+
+## [0.1.0] - 2020-03-03
+### Added
+- Added some more documentation.
+- Pre-commit hooks upgrade.
+### Changed
+- Add variables and outputs to the existing example.
+
+## [0.0.2] - 2020-01-12
+### Added
+- Added pre-commit hooks.
+- Added automated unit tests.
+- Added CI configuration.
+- Added admins for adding members with admins/owner role.
+- Added projects to outputs.
+### Changed
+- Changed members from complex object to list of usernames for adding normal members.
+
+## [0.0.1] - 2020-01-06
+### Added
+- This is the initial release of our GitHub Organization module with support
+  for managing GitHub Organizations, Members and Blocked Users.
+
+[Unreleased]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.1.2...v0.1.3
+[0.1.2]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.1.1...v0.1.2
+[0.1.1]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.0.2...v0.1.0
+[0.0.2]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.0.1...v0.0.2
+[0.0.1]: https://github.com/mineiros-io/terraform-github-organization/releases/tag/v0.0.1
