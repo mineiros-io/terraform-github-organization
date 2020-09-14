@@ -24,7 +24,7 @@ provider "github" {
 
 module "organization" {
   source  = "mineiros-io/organization/github"
-  version = "0.1.4"
+  version = "~> 0.2.0"
 
   all_members_team_name       = "everyone"
   all_members_team_visibility = "closed"

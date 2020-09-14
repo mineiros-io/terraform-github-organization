@@ -50,7 +50,7 @@ To quickly start managing your GitHub Organization with Terraform:
 ```hcl
 module "organization" {
   source  = "mineiros-io/organization/github"
-  version = "0.0.5"
+  version = "~> 0.2.0"
 
   create_all_members_team = true
 
