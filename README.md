@@ -2,15 +2,18 @@
 
 [![Build Status][badge-build]][build-status]
 [![GitHub tag (latest SemVer)][badge-semver]][releases-github]
-[![license][badge-license]][apache20]
 [![Terraform Version][badge-terraform]][releases-terraform]
+[![Github Provider Version][badge-tf-gh]][releases-github-provider]
 [![Join Slack][badge-slack]][slack]
 
 # terraform-github-organization
 
-A Terraform module that acts as a wrapper around the Terraform
+A [Terraform] module that acts as a wrapper around the Terraform
 [GitHub provider](https://www.terraform.io/docs/providers/github/index.html) and offers a more convenient and tested way
- to manage GitHub Organizations following best practices.
+to manage GitHub Organizations following best practices.
+
+***This module supports Terraform v0.13 as well as v0.12.9 and above
+and is compatible with the Terraform Github Provider v3 as well as v2.4 and above.***
 
 - [Module Features](#module-features)
 - [Getting Started](#getting-started)
@@ -27,8 +30,6 @@ A Terraform module that acts as a wrapper around the Terraform
 - [License](#license)
 
 ## Module Features
-
-A [Terraform] 0.12 module for managing an organization on [Github].
 
 - **Standard Module Features**:
   Organization Members,
@@ -49,7 +50,7 @@ To quickly start managing your GitHub Organization with Terraform:
 ```hcl
 module "organization" {
   source  = "mineiros-io/organization/github"
-  version = "0.0.5"
+  version = "~> 0.2.0"
 
   create_all_members_team = true
 
@@ -186,6 +187,8 @@ Run `make help` to see details on each available target.
 
 ## License
 
+[![license][badge-license]][apache20]
+
 This module is licensed under the Apache License Version 2.0, January 2004.
 Please see [LICENSE] for full details.
 
@@ -204,6 +207,9 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 
 [build-status]: https://github.com/mineiros-io/terraform-github-organization/actions
 [releases-github]: https://github.com/mineiros-io/terraform-github-organization/releases
+
+[badge-tf-gh]: https://img.shields.io/badge/GH-3%20and%202.4+-F8991D.svg?logo=terraform
+[releases-github-provider]: https://github.com/terraform-providers/terraform-provider-github/releases
 
 [releases-terraform]: https://github.com/hashicorp/terraform/releases
 [apache20]: https://opensource.org/licenses/Apache-2.0
