@@ -8,8 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0]
 ### Changed
-- Add support for Terraform 0.13.x.
-- Add support for Terraform Github provider 3.x.
+- Add support for Terraform v0.13.x
+- Add support for Terraform Github Provider v3.x
+- Prepare support for Terraform v0.14.x (needs terraform v0.12.20 or above)
 
 ## [0.1.4] - 2020-06-23
 ### Added
