@@ -12,8 +12,8 @@ A [Terraform] module that acts as a wrapper around the Terraform
 [GitHub provider](https://www.terraform.io/docs/providers/github/index.html) and offers a more convenient and tested way
 to manage GitHub Organizations following best practices.
 
-***This module supports Terraform v0.13 as well as v0.12.9 and above
-and is compatible with the Terraform Github Provider v3 as well as v2.4 and above.***
+*This module supports Terraform v0.14, v0.13 as well as v0.12.9 and above
+and is compatible with the Terraform Github Provider v3 as well as v2.4 and above.*
 
 - [Module Features](#module-features)
 - [Getting Started](#getting-started)
@@ -50,7 +50,7 @@ To quickly start managing your GitHub Organization with Terraform:
 ```hcl
 module "organization" {
   source  = "mineiros-io/organization/github"
-  version = "~> 0.2.0"
+  version = "~> 0.3.0"
 
   create_all_members_team = true
 
@@ -142,7 +142,7 @@ The following attributes are exported by the module:
 
 ## External Documentation
 
-- Terraform Github Provider Documentation: 
+- Terraform Github Provider Documentation:
    - https://www.terraform.io/docs/providers/github/index.html
 
 ## Module Versioning
@@ -202,7 +202,7 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 [badge-build]: https://github.com/mineiros-io/terraform-github-organization/workflows/CI/CD%20Pipeline/badge.svg
 [badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-github-organization.svg?label=latest&sort=semver
 [badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
-[badge-terraform]: https://img.shields.io/badge/terraform-0.13%20and%200.12.20+-623CE4.svg?logo=terraform
+[badge-terraform]: https://img.shields.io/badge/terraform-0.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform
 [badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
 
 [build-status]: https://github.com/mineiros-io/terraform-github-organization/actions
