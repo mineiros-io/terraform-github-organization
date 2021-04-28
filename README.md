@@ -12,8 +12,8 @@ A [Terraform] module that acts as a wrapper around the Terraform
 [GitHub provider](https://www.terraform.io/docs/providers/github/index.html) and offers a more convenient and tested way
 to manage GitHub Organizations following best practices.
 
-*This module supports Terraform v0.14, v0.13 as well as v0.12.9 and above
-and is compatible with the Terraform Github Provider v3 as well as v2.4 and above.*
+_This module supports Terraform v0.14, v0.13 as well as v0.12.9 and above
+and is compatible with the Terraform Github Provider v4, v3 as well as v2.4 and above._
 
 - [Module Features](#module-features)
 - [Getting Started](#getting-started)
@@ -50,7 +50,7 @@ To quickly start managing your GitHub Organization with Terraform:
 ```hcl
 module "organization" {
   source  = "mineiros-io/organization/github"
-  version = "~> 0.3.0"
+  version = "~> 0.4.0"
 
   create_all_members_team = true
 
@@ -84,35 +84,35 @@ See [variables.tf] and [examples/] for details and use-cases.
 
 ### Top-level Arguments
 
-- **`blocked_users`**: *(Optional `set(string)`)*
+- **`blocked_users`**: _(Optional `set(string)`)_
 
   A list of usernames to be blocked from a GitHub organization.
   Default is `[]`.
 
-- **`members`**: *(Optional `set(string)`)*
+- **`members`**: _(Optional `set(string)`)_
 
   A list of users to be added to your organization with member role.
   When applied, an invitation will be sent to the user to become part of the organization.
   When destroyed, either the invitation will be cancelled or the user will be removed.
   Default is `[]`.
 
-- **`admins`**: *(Optional `set(string)`)*
+- **`admins`**: _(Optional `set(string)`)_
 
   A list of users to be added to your organization with admin role.
   When applied, an invitation will be sent to the user to become part of the organization.
   When destroyed, either the invitation will be cancelled or the user will be removed.
   Default is `[]`.
 
-- **`projects`**: *(Optional `list(project)`)*
+- **`projects`**: _(Optional `list(project)`)_
   Create and manage projects for the GitHub organization.
   Default is `[]`.
 
-- **`all_members_team_name`**: *(Optional `string`)*
+- **`all_members_team_name`**: _(Optional `string`)_
 
   The name of the team that contains all members of the organization.
   Default is `null`.
 
-- **`all_members_team_visibility`**: *(Optional `string`)*
+- **`all_members_team_visibility`**: _(Optional `string`)_
 
   The level of privacy for the team. Must be one of `secret` or `closed`.
   Default is `secret`.
@@ -143,7 +143,7 @@ The following attributes are exported by the module:
 ## External Documentation
 
 - Terraform Github Provider Documentation:
-   - https://www.terraform.io/docs/providers/github/index.html
+  - https://www.terraform.io/docs/providers/github/index.html
 
 ## Module Versioning
 
@@ -198,32 +198,26 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 
 [homepage]: https://mineiros.io/?ref=terraform-github-organization
 [hello@mineiros.io]: mailto:hello@mineiros.io
-
 [badge-build]: https://github.com/mineiros-io/terraform-github-organization/workflows/CI/CD%20Pipeline/badge.svg
 [badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-github-organization.svg?label=latest&sort=semver
 [badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
 [badge-terraform]: https://img.shields.io/badge/terraform-0.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform
 [badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
-
 [build-status]: https://github.com/mineiros-io/terraform-github-organization/actions
 [releases-github]: https://github.com/mineiros-io/terraform-github-organization/releases
-
-[badge-tf-gh]: https://img.shields.io/badge/GH-3%20and%202.4+-F8991D.svg?logo=terraform
+[badge-tf-gh]: https://img.shields.io/badge/GH-4%20|%203%20|%202.4+-F8991D.svg?logo=terraform
 [releases-github-provider]: https://github.com/terraform-providers/terraform-provider-github/releases
-
 [releases-terraform]: https://github.com/hashicorp/terraform/releases
 [apache20]: https://opensource.org/licenses/Apache-2.0
 [slack]: https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg
-
-[Terraform]: https://www.terraform.io
-[AWS]: https://aws.amazon.com/
-[Semantic Versioning (SemVer)]: https://semver.org/
-
+[terraform]: https://www.terraform.io
+[aws]: https://aws.amazon.com/
+[semantic versioning (semver)]: https://semver.org/
 [examples/example/main.tf]: https://github.com/mineiros-io/terraform-github-organization/blob/master/examples/example/main.tf
 [variables.tf]: https://github.com/mineiros-io/terraform-github-organization/blob/master/variables.tf
 [examples/]: https://github.com/mineiros-io/terraform-github-organization/blob/master/examples
-[Issues]: https://github.com/mineiros-io/terraform-github-organization/issues
-[LICENSE]: https://github.com/mineiros-io/terraform-github-organization/blob/master/LICENSE
-[Makefile]: https://github.com/mineiros-io/terraform-github-organization/blob/master/Makefile
-[Pull Requests]: https://github.com/mineiros-io/terraform-github-organization/pulls
-[Contribution Guidelines]: https://github.com/mineiros-io/terraform-github-organization/blob/master/CONTRIBUTING.md
+[issues]: https://github.com/mineiros-io/terraform-github-organization/issues
+[license]: https://github.com/mineiros-io/terraform-github-organization/blob/master/LICENSE
+[makefile]: https://github.com/mineiros-io/terraform-github-organization/blob/master/Makefile
+[pull requests]: https://github.com/mineiros-io/terraform-github-organization/pulls
+[contribution guidelines]: https://github.com/mineiros-io/terraform-github-organization/blob/master/CONTRIBUTING.md
