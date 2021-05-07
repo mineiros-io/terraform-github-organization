@@ -117,6 +117,11 @@ See [variables.tf] and [examples/] for details and use-cases.
   The level of privacy for the team. Must be one of `secret` or `closed`.
   Default is `secret`.
 
+- **`catch_non_existing_members`**: _(Optional `bool`)_
+
+  Validates if the list of GitHub users are existing users on every run. Use carefully as it will trigger one additional API call for every given user on every iteration.
+	Default is `false`.
+
 ## Module Attributes Reference
 
 The following attributes are exported by the module:
