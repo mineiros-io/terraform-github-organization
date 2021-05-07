@@ -13,6 +13,13 @@ locals {
   memberships = merge(local.admins, local.members)
 }
 
+# Safeguard for validating if a GitHub user exists on `terraform plan`
+data "github_user" "user" {
+  for_each = var.catch_non_existing_members ? local.memberships : {}
+
+  username = each.key
+}
+
 resource "github_membership" "membership" {
   for_each = local.memberships
 

@@ -28,6 +28,12 @@ variable "all_members_team_visibility" {
   default     = "secret"
 }
 
+variable "catch_non_existing_members" {
+  description = "(Optional) Validates if the list of GitHub users are existing users on every run. Use carefully as it will trigger one additional API call for every given user on every iteration. Default is 'false'"
+  type        = bool
+  default     = false
+}
+
 variable "blocked_users" {
   description = "(Optional) A list of usernames to be blocked from a GitHub organization."
   type        = set(string)
