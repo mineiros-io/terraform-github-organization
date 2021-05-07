@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.1]
+### Added
+- feat: add safeguard to validate if a GitHub user exists before trying to add it to the organization
 ## [0.4.0]
 
 ### Added
@@ -91,12 +94,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   for managing GitHub Organizations, Members and Blocked Users.
 
 <!-- markdown-link-check-disable -->
-
-[unreleased]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.4.0...HEAD
-[0.4.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.3.0...v0.4.0
-
+[unreleased]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.0.0...v0.4.1
 <!-- markdown-link-check-enable -->
 
+[0.4.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.1.4...v0.2.0
 [0.1.4]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.1.3...v0.1.4
