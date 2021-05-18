@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - feat: upgrade pre-commit hooks to `v0.2.3`
+- build: upgrade build-tools hooks to `v0.11.0`
 
 ## [0.4.1]
 ### Added
