@@ -14,7 +14,8 @@ In Addition it blocks two random users and sets up two projects.
 
 ```hcl
 module "organization" {
-  source = "../.."
+  source  = "mineiros-io/organization/github"
+  version = "~> 0.5.0"
 
   all_members_team_name       = "everyone"
   all_members_team_visibility = "closed"

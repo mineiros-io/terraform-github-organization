@@ -50,7 +50,7 @@ To quickly start managing your GitHub Organization with Terraform:
 ```hcl
 module "organization" {
   source  = "mineiros-io/organization/github"
-  version = "~> 0.4.0"
+  version = "~> 0.5.0"
 
   create_all_members_team = true
 
@@ -206,7 +206,7 @@ Copyright &copy; 2020 [Mineiros GmbH][homepage]
 [badge-build]: https://github.com/mineiros-io/terraform-github-organization/workflows/CI/CD%20Pipeline/badge.svg
 [badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-github-organization.svg?label=latest&sort=semver
 [badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
-[badge-terraform]: https://img.shields.io/badge/terraform-0.15%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform
+[badge-terraform]: https://img.shields.io/badge/terraform-0.15%20|%200.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform
 [badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
 [build-status]: https://github.com/mineiros-io/terraform-github-organization/actions
 [releases-github]: https://github.com/mineiros-io/terraform-github-organization/releases
