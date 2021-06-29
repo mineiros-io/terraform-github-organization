@@ -15,7 +15,7 @@ In Addition it blocks two random users and sets up two projects.
 ```hcl
 module "organization" {
   source  = "mineiros-io/organization/github"
-  version = "~> 0.5.0"
+  version = "~> 0.6.0"
 
   all_members_team_name       = "everyone"
   all_members_team_visibility = "closed"
@@ -80,7 +80,7 @@ Run `terraform destroy` to destroy all resources again.
 [homepage]: https://mineiros.io/?ref=terraform-github-organization
 
 [badge-license]: https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg
-[badge-terraform]: https://img.shields.io/badge/terraform-0.13%20and%200.12.9+-623CE4.svg?logo=terraform
+[badge-terraform]: https://img.shields.io/badge/terraform-1.x%20|0.15%20|0.14%20|%200.13%20|%200.12.20+-623CE4.svg?logo=terraform
 [badge-slack]: https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack
 
 [releases-terraform]: https://github.com/hashicorp/terraform/releases
