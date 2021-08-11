@@ -10,17 +10,13 @@
 # ---------------------------------------------------------------------------------------------------------------------
 # You can provide your credentials via the
 #   GITHUB_TOKEN and
-#   GITHUB_ORGANIZATION, environment variables,
+#   GITHUB_OWNER, environment variables,
 # representing your Access Token and the organization, respectively.
 # ---------------------------------------------------------------------------------------------------------------------
 
 # ---------------------------------------------------------------------------------------------------------------------
 # EXAMPLE PROVIDER CONFIGURATION
 # ---------------------------------------------------------------------------------------------------------------------
-
-provider "github" {
-  organization = "example-organization"
-}
 
 module "organization" {
   source  = "mineiros-io/organization/github"
