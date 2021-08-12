@@ -13,11 +13,11 @@ import (
 var githubOrganization, githubToken string
 
 func init() {
-	githubOrganization = os.Getenv("GITHUB_ORGANIZATION")
+	githubOrganization = os.Getenv("GITHUB_OWNER")
 	githubToken = os.Getenv("GITHUB_TOKEN")
 
 	if githubOrganization == "" {
-		panic("Please set a github organization using the GITHUB_ORGANIZATION environment variable.")
+		panic("Please set a github organization using the GITHUB_OWNER environment variable.")
 	}
 
 	if githubToken == "" {
