@@ -74,7 +74,7 @@ variable "admins" {
 }
 
 variable "projects" {
-  type = list(any)
+  type = any
 
   # We can't use a detailed type specification due to a terraform limitation. However, this might be changed in a future
   # Terraform version. See https://github.com/hashicorp/terraform/issues/19898 and https://github.com/hashicorp/terraform/issues/22449
