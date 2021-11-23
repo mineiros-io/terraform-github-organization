@@ -7,13 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0]
+
 ### BREAKING CHANGES
 
 We dropped support for Terraform pre 1.0 and GitHub Terraform Provider pre 4.0.
 In addition we changed to the `integrations/github` official GitHub Terraform Provider.
 This needs migration actions if you already used this module with the `hashicorp/github` provider and want to upgrade.
 
-Steps to upgrade will be added prior to the breaking release.
+#### Migration from previous versions
+
+To migrate from a previous version, please ensure that you are using the
+`integrations/github` official GitHub Terraform Provider.
+
+
+``` hcl
+terraform {
+  required_version = "~> 1.0"
+
+  required_providers {
+    github = {
+      source  = "integrations/github"
+      version = "~> 4.0"
+    }
+  }
+}
+```
+
+Once you've updated the provider, a manual state migration is required to
+migrate existing resources to the new provider.
+The following command will replace the provider in the state.
+
+``` bash
+terraform state replace-provider registry.terraform.io/hashicorp/github registry.terraform.io/integrations/github
+```
+
+After you've migrated the state, please run
+`terrafrm init` to apply the changes to the resources.
 
 ### Added
 
@@ -128,11 +158,12 @@ Steps to upgrade will be added prior to the breaking release.
 
 <!-- markdown-link-check-disable -->
 
-[unreleased]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.6.0...HEAD
-[0.6.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.5.0...v0.6.0
+[unreleased]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.6.0...v0.7.0
 
 <!-- markdown-link-check-enable -->
 
+[0.6.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.4.1...v0.5.0
 [0.4.1]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.3.0...v0.4.0
