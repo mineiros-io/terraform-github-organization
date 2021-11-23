@@ -20,7 +20,7 @@
 
 module "organization" {
   source  = "mineiros-io/organization/github"
-  version = "~> 0.6.0"
+  version = "~> 0.7.0"
 
   all_members_team_name       = "everyone"
   all_members_team_visibility = "closed"
