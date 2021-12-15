@@ -75,7 +75,7 @@ Run `terraform destroy` to destroy all resources again.
 
 <!-- References -->
 
-[main.tf]: https://github.com/mineiros-io/terraform-github-organization/blob/master/examples/organization/main.tf
+[main.tf]: https://github.com/mineiros-io/terraform-github-organization/blob/main/examples/organization/main.tf
 
 [homepage]: https://mineiros.io/?ref=terraform-github-organization
 
