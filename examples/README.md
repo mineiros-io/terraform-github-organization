@@ -10,7 +10,7 @@
 - [organization/] Create a public repository on github and set it up with access and webhooks.
 
 <!-- References -->
-[organization/]: https://github.com/mineiros-io/terraform-github-organization/blob/master/examples/organization
+[organization/]: https://github.com/mineiros-io/terraform-github-organization/blob/main/examples/organization
 
 [homepage]: https://mineiros.io/?ref=terraform-github-organization
 

@@ -232,11 +232,11 @@ Copyright &copy; 2021 [Mineiros GmbH][homepage]
 [terraform]: https://www.terraform.io
 [aws]: https://aws.amazon.com/
 [semantic versioning (semver)]: https://semver.org/
-[examples/example/main.tf]: https://github.com/mineiros-io/terraform-github-organization/blob/master/examples/example/main.tf
-[variables.tf]: https://github.com/mineiros-io/terraform-github-organization/blob/master/variables.tf
-[examples/]: https://github.com/mineiros-io/terraform-github-organization/blob/master/examples
+[examples/example/main.tf]: https://github.com/mineiros-io/terraform-github-organization/blob/main/examples/example/main.tf
+[variables.tf]: https://github.com/mineiros-io/terraform-github-organization/blob/main/variables.tf
+[examples/]: https://github.com/mineiros-io/terraform-github-organization/blob/main/examples
 [issues]: https://github.com/mineiros-io/terraform-github-organization/issues
-[license]: https://github.com/mineiros-io/terraform-github-organization/blob/master/LICENSE
-[makefile]: https://github.com/mineiros-io/terraform-github-organization/blob/master/Makefile
+[license]: https://github.com/mineiros-io/terraform-github-organization/blob/main/LICENSE
+[makefile]: https://github.com/mineiros-io/terraform-github-organization/blob/main/Makefile
 [pull requests]: https://github.com/mineiros-io/terraform-github-organization/pulls
-[contribution guidelines]: https://github.com/mineiros-io/terraform-github-organization/blob/master/CONTRIBUTING.md
+[contribution guidelines]: https://github.com/mineiros-io/terraform-github-organization/blob/main/CONTRIBUTING.md
