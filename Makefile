@@ -80,6 +80,11 @@ help:
 	} \
 	{ lastLine = $$0 }' $(MAKEFILE_LIST)
 
+## Generate README.md with Terradoc
+.PHONY: terradoc
+terradoc:
+	$(call quiet-command,terradoc -o README.md README.tfdoc.hcl)
+
 # define helper functions
 quiet-command = $(if ${V},${1},$(if ${2},@echo ${2} && ${1}, @${1}))
 docker-run    = $(call quiet-command,${DOCKER_RUN_CMD} ${1} | cat,"${YELLOW}[DOCKER RUN] ${GREEN}${1}${RESET}")

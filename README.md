@@ -1,10 +1,10 @@
-[<img src="https://raw.githubusercontent.com/mineiros-io/brand/3bffd30e8bdbbde32c143e2650b2faa55f1df3ea/mineiros-primary-logo.svg" width="400"/>][homepage]
+[<img src="https://raw.githubusercontent.com/mineiros-io/brand/3bffd30e8bdbbde32c143e2650b2faa55f1df3ea/mineiros-primary-logo.svg" width="400"/>](https://mineiros.io/?ref=terraform-github-organization)
 
-[![Build Status][badge-build]][build-status]
-[![GitHub tag (latest SemVer)][badge-semver]][releases-github]
-[![Terraform Version][badge-terraform]][releases-terraform]
-[![Github Provider Version][badge-tf-gh]][releases-github-provider]
-[![Join Slack][badge-slack]][slack]
+[![Build Status](https://github.com/mineiros-io/terraform-github-organization/workflows/CI/CD%20Pipeline/badge.svg)](https://github.com/mineiros-io/terraform-github-organization/actions)
+[![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-github-organization.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-github-organization/releases)
+[![Terraform Version](https://img.shields.io/badge/terraform-1.x-623CE4.svg?logo=terraform)](https://github.com/hashicorp/terraform/releases)
+[![Github Provider Version](https://img.shields.io/badge/GH-4.x-F8991D.svg?logo=terraform)](https://github.com/terraform-providers/terraform-provider-github/releases)
+[![Join Slack](https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack)](https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg)
 
 # terraform-github-organization
 
@@ -16,12 +16,14 @@ to manage GitHub Organizations following best practices.
 
 **Attention: This module is incompatible with the Hashicorp GitHub Provider! The latest version of this module supporting `hashicorp/github` provider is `~> 0.6.0`**
 
+
 - [Module Features](#module-features)
 - [Getting Started](#getting-started)
 - [Module Argument Reference](#module-argument-reference)
   - [Top-level Arguments](#top-level-arguments)
-- [Module Attributes Reference](#module-attributes-reference)
+- [Module Outputs](#module-outputs)
 - [External Documentation](#external-documentation)
+  - [Terraform Github Provider Documentation:](#terraform-github-provider-documentation)
 - [Module Versioning](#module-versioning)
   - [Backwards compatibility in `0.0.z` and `0.y.z` version](#backwards-compatibility-in-00z-and-0yz-version)
 - [About Mineiros](#about-mineiros)
@@ -98,45 +100,91 @@ See [variables.tf] and [examples/] for details and use-cases.
 
 ### Top-level Arguments
 
-- **`blocked_users`**: _(Optional `set(string)`)_
+- [**`blocked_users`**](#var-blocked_users): *(Optional `set(string)`)*<a name="var-blocked_users"></a>
 
   A list of usernames to be blocked from a GitHub organization.
+
   Default is `[]`.
 
-- **`members`**: _(Optional `set(string)`)_
+  Example:
+
+  ```hcl
+  blocked_users = [
+    "blocked-user"
+  ]
+  ```
+
+- [**`members`**](#var-members): *(Optional `set(string)`)*<a name="var-members"></a>
 
   A list of users to be added to your organization with member role.
   When applied, an invitation will be sent to the user to become part of the organization.
   When destroyed, either the invitation will be cancelled or the user will be removed.
+
   Default is `[]`.
 
-- **`admins`**: _(Optional `set(string)`)_
+  Example:
+
+  ```hcl
+  members = [
+    "admin",
+    "another-admin"
+  ]
+  ```
+
+- [**`admins`**](#var-admins): *(Optional `set(string)`)*<a name="var-admins"></a>
 
   A list of users to be added to your organization with admin role.
   When applied, an invitation will be sent to the user to become part of the organization.
   When destroyed, either the invitation will be cancelled or the user will be removed.
+
   Default is `[]`.
 
-- **`projects`**: _(Optional `list(project)`)_
+  Example:
+
+  ```hcl
+  admins = [
+    "admin",
+    "another-admin"
+  ]
+  ```
+
+- [**`projects`**](#var-projects): *(Optional `list(project)`)*<a name="var-projects"></a>
+
   Create and manage projects for the GitHub organization.
+
   Default is `[]`.
 
-- **`all_members_team_name`**: _(Optional `string`)_
+  Example:
+
+  ```hcl
+  projects = [
+    {
+      name   = "Test Project"
+      body   = "This is a test project created by Terraform"
+    },
+    {
+      name   = "Test Project without a body"
+    }
+  ]
+  ```
+
+- [**`all_members_team_name`**](#var-all_members_team_name): *(Optional `string`)*<a name="var-all_members_team_name"></a>
 
   The name of the team that contains all members of the organization.
-  Default is `null`.
 
-- **`all_members_team_visibility`**: _(Optional `string`)_
+- [**`all_members_team_visibility`**](#var-all_members_team_visibility): *(Optional `string`)*<a name="var-all_members_team_visibility"></a>
 
   The level of privacy for the team. Must be one of `secret` or `closed`.
-  Default is `secret`.
 
-- **`catch_non_existing_members`**: _(Optional `bool`)_
+  Default is `"secret"`.
+
+- [**`catch_non_existing_members`**](#var-catch_non_existing_members): *(Optional `bool`)*<a name="var-catch_non_existing_members"></a>
 
   Validates if the list of GitHub users are existing users on every run. Use carefully as it will trigger one additional API call for every given user on every iteration.
-	Default is `false`.
 
-## Module Attributes Reference
+  Default is `false`.
+
+## Module Outputs
 
 The following attributes are exported by the module:
 
@@ -159,10 +207,15 @@ The following attributes are exported by the module:
   A list of `github_organization_project` resource objects that
   describe all projects of the organization.
 
+- **`all_members_team`**
+
+  The outputs of the all members team that contains all members of your organization.
+
 ## External Documentation
 
-- Terraform Github Provider Documentation:
-  - https://www.terraform.io/docs/providers/github/index.html
+### Terraform Github Provider Documentation:
+
+- https://www.terraform.io/docs/providers/github/index.html
 
 ## Module Versioning
 
@@ -211,7 +264,8 @@ Run `make help` to see details on each available target.
 This module is licensed under the Apache License Version 2.0, January 2004.
 Please see [LICENSE] for full details.
 
-Copyright &copy; 2021 [Mineiros GmbH][homepage]
+Copyright &copy; 2021-2022 [Mineiros GmbH][homepage]
+
 
 <!-- References -->
 
