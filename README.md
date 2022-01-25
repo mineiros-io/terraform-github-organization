@@ -188,28 +188,29 @@ See [variables.tf] and [examples/] for details and use-cases.
 
 The following attributes are exported by the module:
 
-- **`module_enabled`**
-
-  Whether this module is enabled.
-
-- **`blocked_users`**
+- [**`blocked_users`**](#output-blocked_users): *(`set(string)`)*<a name="output-blocked_users"></a>
 
   A list of `github_organization_block` resource objects
   that describe all users that are blocked by the organization.
 
-- **`memberships`**
+- [**`memberships`**](#output-memberships): *(`list(membership)`)*<a name="output-memberships"></a>
 
   A list of `github_membership` resource objects that describe
   all members of the organization.
 
-- **`projects`**
+- [**`projects`**](#output-projects): *(`list(project)`)*<a name="output-projects"></a>
 
   A list of `github_organization_project` resource objects that
   describe all projects of the organization.
 
-- **`all_members_team`**
+- [**`all_members_team`**](#output-all_members_team): *(`object(all_members_team)`)*<a name="output-all_members_team"></a>
 
-  The outputs of the all members team that contains all members of your organization.
+  The outputs of the all members team that contains all members of your
+  organization.
+
+- [**`module_enabled`**](#output-module_enabled): *(`bool`)*<a name="output-module_enabled"></a>
+
+  Whether this module is enabled.
 
 ## External Documentation
 

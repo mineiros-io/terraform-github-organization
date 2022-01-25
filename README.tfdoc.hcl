@@ -124,9 +124,9 @@ section {
       title = "Top-level Arguments"
 
       variable "blocked_users" {
-        type        = set(string)
-        default     = []
-        description = <<-END
+        type           = set(string)
+        default        = []
+        description    = <<-END
           A list of usernames to be blocked from a GitHub organization.
         END
         readme_example = <<-END
@@ -137,9 +137,9 @@ section {
       }
 
       variable "members" {
-        type        = set(string)
-        default     = []
-        description = <<-END
+        type           = set(string)
+        default        = []
+        description    = <<-END
           A list of users to be added to your organization with member role.
           When applied, an invitation will be sent to the user to become part of the organization.
           When destroyed, either the invitation will be cancelled or the user will be removed.
@@ -153,9 +153,9 @@ section {
       }
 
       variable "admins" {
-        type        = set(string)
-        default     = []
-        description = <<-END
+        type           = set(string)
+        default        = []
+        description    = <<-END
           A list of users to be added to your organization with admin role.
           When applied, an invitation will be sent to the user to become part of the organization.
           When destroyed, either the invitation will be cancelled or the user will be removed.
@@ -169,9 +169,9 @@ section {
       }
 
       variable "projects" {
-        type        = list(project)
-        default     = []
-        description = <<-END
+        type           = list(project)
+        default        = []
+        description    = <<-END
           Create and manage projects for the GitHub organization.
         END
         readme_example = <<-END
@@ -216,30 +216,46 @@ section {
     title   = "Module Outputs"
     content = <<-END
       The following attributes are exported by the module:
+    END
 
-      - **`module_enabled`**
-
-        Whether this module is enabled.
-
-      - **`blocked_users`**
-
+    output "blocked_users" {
+      type        = set(string)
+      description = <<-END
         A list of `github_organization_block` resource objects
         that describe all users that are blocked by the organization.
+      END
+    }
 
-      - **`memberships`**
-
+    output "memberships" {
+      type        = list(membership)
+      description = <<-END
         A list of `github_membership` resource objects that describe
         all members of the organization.
+      END
+    }
 
-      - **`projects`**
-
+    output "projects" {
+      type        = list(project)
+      description = <<-END
         A list of `github_organization_project` resource objects that
         describe all projects of the organization.
+      END
+    }
 
-      - **`all_members_team`**
+    output "all_members_team" {
+      type        = object(all_members_team)
+      description = <<-END
+        The outputs of the all members team that contains all members of your
+        organization.
+      END
+    }
 
-        The outputs of the all members team that contains all members of your organization.
-    END
+    output "module_enabled" {
+      type        = bool
+      description = <<-END
+        Whether this module is enabled.
+      END
+    }
   }
 
   section {
