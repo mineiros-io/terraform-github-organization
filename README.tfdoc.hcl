@@ -245,8 +245,7 @@ section {
     output "all_members_team" {
       type        = object(all_members_team)
       description = <<-END
-        The outputs of the all members team that contains all members of your
-        organization.
+        The outputs of the all members team that contains all members of your organization.
       END
     }
 
