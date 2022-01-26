@@ -205,8 +205,7 @@ The following attributes are exported by the module:
 
 - [**`all_members_team`**](#output-all_members_team): *(`object(all_members_team)`)*<a name="output-all_members_team"></a>
 
-  The outputs of the all members team that contains all members of your
-  organization.
+  The outputs of the all members team that contains all members of your organization.
 
 - [**`module_enabled`**](#output-module_enabled): *(`bool`)*<a name="output-module_enabled"></a>
 
