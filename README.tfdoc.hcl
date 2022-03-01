@@ -70,8 +70,7 @@ section {
 
       ```hcl
       module "organization" {
-        source  = "mineiros-io/organization/github"
-        version = "~> 0.7.0"
+        source  = "git@github.com:mineiros-io/terraform-github-organization.git?ref=v0.7.0"
 
         create_all_members_team = true
 
