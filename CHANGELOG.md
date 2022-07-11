@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Update build tools, GitHub Actions and pre-commit hooks from template
+
 ## [0.7.0]
 
 ### BREAKING CHANGES
