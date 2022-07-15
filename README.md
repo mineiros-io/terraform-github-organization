@@ -26,6 +26,7 @@ to manage GitHub Organizations following best practices.
   - [Terraform Github Provider Documentation:](#terraform-github-provider-documentation)
 - [Module Versioning](#module-versioning)
   - [Backwards compatibility in `0.0.z` and `0.y.z` version](#backwards-compatibility-in-00z-and-0yz-version)
+- [GitHub as Code](#github-as-code)
 - [About Mineiros](#about-mineiros)
 - [Reporting Issues](#reporting-issues)
 - [Contributing](#contributing)
@@ -232,6 +233,17 @@ Given a version number `MAJOR.MINOR.PATCH`, we increment the:
 - Backwards compatibility in versions `0.0.z` is **not guaranteed** when `z` is increased. (Initial development)
 - Backwards compatibility in versions `0.y.z` is **not guaranteed** when `y` is increased. (Pre-release)
 
+## GitHub as Code
+
+[GitHub as Code][github-as-code] is a commercial solution built on top of
+our open-source Terraform modules for GitHub. It helps our customers to
+manage their GitHub organization more efficiently by enabling anyone in
+their organization to self-service manage on- and offboarding of users,
+repositories, and settings such as branch protections, secrets, and more
+through code.
+
+For details please see [https://mineiros.io/github-as-code][github-as-code]
+
 ## About Mineiros
 
 Mineiros is a [DevOps as a Service][homepage] company based in Berlin, Germany.
@@ -270,6 +282,7 @@ Copyright &copy; 2021-2022 [Mineiros GmbH][homepage]
 <!-- References -->
 
 [homepage]: https://mineiros.io/?ref=terraform-github-organization
+[github-as-code]: https://mineiros.io/github-as-code?ref=terraform-github-organization
 [hello@mineiros.io]: mailto:hello@mineiros.io
 [badge-build]: https://github.com/mineiros-io/terraform-github-organization/workflows/CI/CD%20Pipeline/badge.svg
 [badge-semver]: https://img.shields.io/github/v/tag/mineiros-io/terraform-github-organization.svg?label=latest&sort=semver
