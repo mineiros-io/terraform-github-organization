@@ -17,6 +17,7 @@ to manage GitHub Organizations following best practices.
 **Attention: This module is incompatible with the Hashicorp GitHub Provider! The latest version of this module supporting `hashicorp/github` provider is `~> 0.6.0`**
 
 
+- [GitHub as Code](#github-as-code)
 - [Module Features](#module-features)
 - [Getting Started](#getting-started)
 - [Module Argument Reference](#module-argument-reference)
@@ -26,12 +27,27 @@ to manage GitHub Organizations following best practices.
   - [Terraform Github Provider Documentation:](#terraform-github-provider-documentation)
 - [Module Versioning](#module-versioning)
   - [Backwards compatibility in `0.0.z` and `0.y.z` version](#backwards-compatibility-in-00z-and-0yz-version)
-- [GitHub as Code](#github-as-code)
 - [About Mineiros](#about-mineiros)
 - [Reporting Issues](#reporting-issues)
 - [Contributing](#contributing)
 - [Makefile Targets](#makefile-targets)
 - [License](#license)
+
+## GitHub as Code
+
+[GitHub as Code][github-as-code] is a commercial solution built on top of
+our open-source Terraform modules for GitHub. It helps our customers to
+manage their GitHub organization more efficiently by enabling anyone in
+their organization to **self-service** manage **on- and offboarding of users**,
+**repositories**, and settings such as **branch protections**, **secrets**, and more
+through code. GitHub as Code comes with **pre-configured GitHub Actions
+pipelines** for **change pre-view in Pull Requests**, **fully automated
+rollouts** and **rollbacks**. It's a comprehensive, ready-to-use blueprint
+maintained by our team of platform engineering experts and saves
+companies such as yours tons of time by building on top of a pre-configured
+solution instead of building and maintaining it yourself.
+
+For details please see [https://mineiros.io/github-as-code][github-as-code].
 
 ## Module Features
 
@@ -232,17 +248,6 @@ Given a version number `MAJOR.MINOR.PATCH`, we increment the:
 
 - Backwards compatibility in versions `0.0.z` is **not guaranteed** when `z` is increased. (Initial development)
 - Backwards compatibility in versions `0.y.z` is **not guaranteed** when `y` is increased. (Pre-release)
-
-## GitHub as Code
-
-[GitHub as Code][github-as-code] is a commercial solution built on top of
-our open-source Terraform modules for GitHub. It helps our customers to
-manage their GitHub organization more efficiently by enabling anyone in
-their organization to self-service manage on- and offboarding of users,
-repositories, and settings such as branch protections, secrets, and more
-through code.
-
-For details please see [https://mineiros.io/github-as-code][github-as-code]
 
 ## About Mineiros
 
