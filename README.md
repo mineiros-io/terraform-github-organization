@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/mineiros-io/terraform-github-organization/workflows/CI/CD%20Pipeline/badge.svg)](https://github.com/mineiros-io/terraform-github-organization/actions)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-github-organization.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-github-organization/releases)
 [![Terraform Version](https://img.shields.io/badge/terraform-1.x-623CE4.svg?logo=terraform)](https://github.com/hashicorp/terraform/releases)
-[![Github Provider Version](https://img.shields.io/badge/GH-4.x-F8991D.svg?logo=terraform)](https://github.com/terraform-providers/terraform-provider-github/releases)
+[![Github Provider Version](https://img.shields.io/badge/GH-5.x-F8991D.svg?logo=terraform)](https://github.com/terraform-providers/terraform-provider-github/releases)
 [![Join Slack](https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack)](https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg)
 
 # terraform-github-organization

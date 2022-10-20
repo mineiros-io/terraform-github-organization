@@ -21,7 +21,7 @@ header {
   }
 
   badge "tf-gh" {
-    image = "https://img.shields.io/badge/GH-4.x-F8991D.svg?logo=terraform"
+    image = "https://img.shields.io/badge/GH-5.x-F8991D.svg?logo=terraform"
     url   = "https://github.com/terraform-providers/terraform-provider-github/releases"
     text  = "Github Provider Version"
   }
