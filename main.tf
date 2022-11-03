@@ -3,6 +3,7 @@
 #   - manage memberships ( admins and members )
 #   - manage blocked users
 #   - manage projects
+#   - manage settings
 #   - create the team "all" that contains every member of the organization
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -50,7 +51,7 @@ resource "github_team" "all" {
   count = var.all_members_team_name != null ? 1 : 0
 
   name        = var.all_members_team_name
-  description = "This teams contains all members of our organization."
+  description = "This team contains all members of our organization."
   privacy     = var.all_members_team_visibility
 }
 
@@ -62,31 +63,36 @@ resource "github_team_membership" "all" {
   role     = "member"
 }
 
-resource "github_organization_settings" "self" {
-    billing_email = try(var.settings["billing_email"], "mail@mail.org")
-    company = try(var.settings["company"],"")
-    blog = try(var.settings["blog"],"")
-    email = try(var.settings["email"],"")
-    twitter_username = try(var.settings["twitter_username"],"")
-    location = try(var.settings["location"],"")
-    name = try(var.settings["name"],"")
-    description = try(var.settings["description"],"")
-    has_organization_projects = try(var.settings["has_organization_projects"],true)
-    has_repository_projects = try(var.settings["has_repository_projects"],true)
-    default_repository_permission = try(var.settings["default_repository_permission"],"read")
-    members_can_create_repositories = try(var.settings["members_can_create_repositories"],true)
-    members_can_create_public_repositories = try(var.settings["members_can_create_public_repositories"],true)
-    members_can_create_private_repositories = try(var.settings["members_can_create_private_repositories"],true)
-    members_can_create_internal_repositories = try(var.settings["members_can_create_internal_repositories"],false)
-    members_can_create_pages = try(var.settings["members_can_create_pages"],true)
-    members_can_create_public_pages = try(var.settings["members_can_create_public_pages"],true)
-    members_can_create_private_pages = try(var.settings["members_can_create_private_pages"],true)
-    members_can_fork_private_repositories = try(var.settings["members_can_fork_private_repositories"],false)
-    web_commit_signoff_required = try(var.settings["web_commit_signoff_required"],false)
-    advanced_security_enabled_for_new_repositories = try(var.settings["advanced_security_enabled_for_new_repositories"],false)
-    dependabot_alerts_enabled_for_new_repositories=  try(var.settings["dependabot_alerts_enabled_for_new_repositories"],false)
-    dependabot_security_updates_enabled_for_new_repositories = try(var.settings["advanced_security_enabled_for_new_repositories"],false)
-    dependency_graph_enabled_for_new_repositories = try(var.settings["dependency_graph_enabled_for_new_repositories"],false)
-    secret_scanning_enabled_for_new_repositories = try(var.settings["secret_scanning_enabled_for_new_repositories"],false)
-    secret_scanning_push_protection_enabled_for_new_repositories = try(var.settings["secret_scanning_push_protection_enabled_for_new_repositories"],false)
+locals {
+  settings = { for k, v in var.settings : lower(k) => v }
+}
+
+resource "github_organization_settings" "settings" {
+    count = (length(local.settings) > 0) ? 1 : 0
+    billing_email = try(local.settings["billing_email"], "mail@mail.org")
+    company = try(local.settings["company"],"")
+    blog = try(local.settings["blog"],"")
+    email = try(local.settings["email"],"")
+    twitter_username = try(local.settings["twitter_username"],"")
+    location = try(local.settings["location"],"")
+    name = try(local.settings["name"],"")
+    description = try(local.settings["description"],"")
+    has_organization_projects = try(local.settings["has_organization_projects"],true)
+    has_repository_projects = try(local.settings["has_repository_projects"],true)
+    default_repository_permission = try(local.settings["default_repository_permission"],"read")
+    members_can_create_repositories = try(local.settings["members_can_create_repositories"],true)
+    members_can_create_public_repositories = try(local.settings["members_can_create_public_repositories"],true)
+    members_can_create_private_repositories = try(local.settings["members_can_create_private_repositories"],true)
+    members_can_create_internal_repositories = try(local.settings["members_can_create_internal_repositories"],false)
+    members_can_create_pages = try(local.settings["members_can_create_pages"],true)
+    members_can_create_public_pages = try(local.settings["members_can_create_public_pages"],true)
+    members_can_create_private_pages = try(local.settings["members_can_create_private_pages"],true)
+    members_can_fork_private_repositories = try(local.settings["members_can_fork_private_repositories"],false)
+    web_commit_signoff_required = try(local.settings["web_commit_signoff_required"],false)
+    advanced_security_enabled_for_new_repositories = try(local.settings["advanced_security_enabled_for_new_repositories"],false)
+    dependabot_alerts_enabled_for_new_repositories=  try(local.settings["dependabot_alerts_enabled_for_new_repositories"],false)
+    dependabot_security_updates_enabled_for_new_repositories = try(local.settings["advanced_security_enabled_for_new_repositories"],false)
+    dependency_graph_enabled_for_new_repositories = try(local.settings["dependency_graph_enabled_for_new_repositories"],false)
+    secret_scanning_enabled_for_new_repositories = try(local.settings["secret_scanning_enabled_for_new_repositories"],false)
+    secret_scanning_push_protection_enabled_for_new_repositories = try(local.settings["secret_scanning_push_protection_enabled_for_new_repositories"],false)
 }
