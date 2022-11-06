@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+
+- Drop support for Terraform GitHub Provider `4.x`
+- Require Terraform GitHub Provider version `5.3` and above to support `github_organization_settings` resource
+
+### Added
+
+- Add support for organization settings by implementing the `github_organization_settings` resource
+
 ## [0.8.0]
 
 ### Added
