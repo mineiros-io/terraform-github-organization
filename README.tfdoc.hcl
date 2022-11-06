@@ -41,7 +41,7 @@ section {
     [GitHub provider](https://www.terraform.io/docs/providers/github/index.html) and offers a more convenient and tested way
     to manage GitHub Organizations following best practices.
 
-    **_This module supports Terraform v1.x and is compatible with the Official Terraform GitHub Provider v4.x from `integrations/github`._**
+    **_This module supports Terraform v1.x and is compatible with the Official Terraform GitHub Provider v5.x from `integrations/github`._**
 
     **Attention: This module is incompatible with the Hashicorp GitHub Provider! The latest version of this module supporting `hashicorp/github` provider is `~> 0.6.0`**
   END
@@ -92,9 +92,39 @@ section {
       ```hcl
       module "organization" {
         source  = "mineiros-io/organization/github"
-        version = "~> 0.7.0"
+        version = "~> 0.9.0"
 
         create_all_members_team = true
+
+        settings = {
+          billing_email                                                = "hello@mineiros.io"
+          company                                                      = "Mineiros"
+          blog                                                         = "https://blog.mineiros.io"
+          email                                                        = "hello@mineiros.io"
+          twitter_username                                             = "mineirosio"
+          location                                                     = "Berlin"
+          name                                                         = "Terraform Tests"
+          description                                                  = "This Organization is just used to run some Terraform tests for https://github.com/mineiros-io"
+          has_organization_projects                                    = true
+          has_repository_projects                                      = true
+          default_repository_permission                                = "read"
+          members_can_create_repositories                              = false
+          members_can_create_public_repositories                       = false
+          members_can_create_private_repositories                      = false
+          members_can_create_internal_repositories                     = false
+          members_can_create_pages                                     = false
+          members_can_create_public_pages                              = false
+          members_can_create_private_pages                             = false
+          members_can_fork_private_repositories                        = false
+          web_commit_signoff_required                                  = false
+          advanced_security_enabled_for_new_repositories               = false
+          dependabot_alerts_enabled_for_new_repositories               = false
+          dependabot_security_updates_enabled_for_new_repositories     = false
+          dependency_graph_enabled_for_new_repositories                = false
+          secret_scanning_enabled_for_new_repositories                 = false
+          secret_scanning_push_protection_enabled_for_new_repositories = false
+        }
+
 
         members = [
           "a-user",
