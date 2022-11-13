@@ -14,4 +14,5 @@ module "organization" {
   admins                      = var.admins
   blocked_users               = var.blocked_users
   projects                    = var.projects
+  settings                    = var.settings
 }

@@ -21,7 +21,7 @@ header {
   }
 
   badge "tf-gh" {
-    image = "https://img.shields.io/badge/GH-4.x-F8991D.svg?logo=terraform"
+    image = "https://img.shields.io/badge/GH-5.x-F8991D.svg?logo=terraform"
     url   = "https://github.com/terraform-providers/terraform-provider-github/releases"
     text  = "Github Provider Version"
   }
@@ -41,7 +41,7 @@ section {
     [GitHub provider](https://www.terraform.io/docs/providers/github/index.html) and offers a more convenient and tested way
     to manage GitHub Organizations following best practices.
 
-    **_This module supports Terraform v1.x and is compatible with the Official Terraform GitHub Provider v4.x from `integrations/github`._**
+    **_This module supports Terraform v1.x and is compatible with the Official Terraform GitHub Provider v5.x from `integrations/github`._**
 
     **Attention: This module is incompatible with the Hashicorp GitHub Provider! The latest version of this module supporting `hashicorp/github` provider is `~> 0.6.0`**
   END
@@ -72,7 +72,9 @@ section {
       Organization Members,
       Organization Owners (Admins),
       Organization Projects,
-      Blocked Users
+      Blocked Users,
+      Manage Organization Settings
+
 
     - **Extended Module Features**:
       Change organization member roles without removing and re-inviting users,
@@ -90,9 +92,39 @@ section {
       ```hcl
       module "organization" {
         source  = "mineiros-io/organization/github"
-        version = "~> 0.7.0"
+        version = "~> 0.9.0"
 
         create_all_members_team = true
+
+        settings = {
+          billing_email                                                = "hello@mineiros.io"
+          company                                                      = "Mineiros"
+          blog                                                         = "https://blog.mineiros.io"
+          email                                                        = "hello@mineiros.io"
+          twitter_username                                             = "mineirosio"
+          location                                                     = "Berlin"
+          name                                                         = "Terraform Tests"
+          description                                                  = "This Organization is just used to run some Terraform tests for https://github.com/mineiros-io"
+          has_organization_projects                                    = true
+          has_repository_projects                                      = true
+          default_repository_permission                                = "read"
+          members_can_create_repositories                              = false
+          members_can_create_public_repositories                       = false
+          members_can_create_private_repositories                      = false
+          members_can_create_internal_repositories                     = false
+          members_can_create_pages                                     = false
+          members_can_create_public_pages                              = false
+          members_can_create_private_pages                             = false
+          members_can_fork_private_repositories                        = false
+          web_commit_signoff_required                                  = false
+          advanced_security_enabled_for_new_repositories               = false
+          dependabot_alerts_enabled_for_new_repositories               = false
+          dependabot_security_updates_enabled_for_new_repositories     = false
+          dependency_graph_enabled_for_new_repositories                = false
+          secret_scanning_enabled_for_new_repositories                 = false
+          secret_scanning_push_protection_enabled_for_new_repositories = false
+        }
+
 
         members = [
           "a-user",
@@ -141,6 +173,214 @@ section {
 
     section {
       title = "Top-level Arguments"
+
+      variable "settings" {
+        type = object(settings)
+        default = {
+          fixed_response = {
+            content_type = "plain/text"
+            message_body = "Nothing to see here!"
+            status_code  = 418
+          }
+        }
+        description = <<-END
+          A map of settings for the GitHub organization.
+        END
+
+
+        attribute "billing_email" {
+          type        = string
+          required    = true
+          description = <<-END
+            The billing email address for the organization.
+          END
+        }
+
+        attribute "email" {
+          type        = string
+          description = <<-END
+            The email address for the organization.
+          END
+        }
+
+        attribute "name" {
+          type        = string
+          description = <<-END
+            The name for the organization.
+          END
+        }
+
+        attribute "description" {
+          type        = string
+          description = <<-END
+            The description for the organization.
+          END
+        }
+
+        attribute "company_name" {
+          type        = string
+          description = <<-END
+            The company name for the organization.
+          END
+        }
+
+        attribute "blog" {
+          type        = string
+          description = <<-END
+            The blog URL for the organization.
+          END
+        }
+
+        attribute "twitter_username" {
+          type        = string
+          description = <<-END
+            The Twitter username for the organization.
+          END
+        }
+
+        attribute "location" {
+          type        = string
+          description = <<-END
+            The location for the organization.
+          END
+        }
+
+        attribute "has_organization_projects" {
+          type        = bool
+          default     = true
+          description = <<-END
+            Whether or not organization projects are enabled for the organization.
+          END
+        }
+
+        attribute "has_repository_projects" {
+          type        = bool
+          default     = true
+          description = <<-END
+            Whether or not repository projects are enabled for the organization.
+          END
+        }
+
+        attribute "default_repository_permission" {
+          type        = string
+          description = <<-END
+            The default permission for organization members to create new repositories.
+            Can be one of `read`, `write`, `admin`, or `none`.
+          END
+        }
+
+        attribute "members_can_create_repositories" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not organization members can create new repositories.
+          END
+        }
+
+        attribute "members_can_create_public_repositories" {
+          type        = bool
+          default     = true
+          description = <<-END
+            Whether or not organization members can create new public repositories.
+          END
+        }
+
+        attribute "members_can_create_private_repositories" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not organization members can create new private repositories.
+          END
+        }
+
+        attribute "members_can_create_internal_repositories" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not organization members can create new internal repositories. For Enterprise Organizations only.
+          END
+        }
+
+        attribute "members_can_create_pages" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not organization members can create new pages.
+          END
+        }
+
+        attribute "members_can_create_public_pages" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not organization members can create new public pages.
+          END
+        }
+
+        attribute "members_can_fork_private_repositories" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not organization members can fork private repositories.
+          END
+        }
+
+        attribute "web_commit_signoff_required" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not commit signatures are required for commits to the organization.
+          END
+        }
+
+        attribute "advanced_security_enabled_for_new_repositories" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not advanced security is enabled for new repositories.
+          END
+        }
+
+        attribute "dependabot_alerts_enabled_for_new_repositories" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not dependabot alerts are enabled for new repositories.
+          END
+        }
+
+        attribute "dependabot_security_updates_enabled_for_new_repositories" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not dependabot security updates are enabled for new repositories.
+          END
+        }
+
+        attribute "dependency_graph_enabled_for_new_repositories" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not dependency graph is enabled for new repositories.
+          END
+        }
+
+        attribute "secret_scanning_enabled_for_new_repositories" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not secret scanning is enabled for new repositories.
+          END
+        }
+
+        attribute "secret_scanning_push_protection_enabled_for_new_repositories" {
+          type        = bool
+          default     = false
+          description = <<-END
+            Whether or not secret scanning push protection is enabled for new repositories.
+          END
+        }
+      }
 
       variable "blocked_users" {
         type           = set(string)
@@ -268,10 +508,10 @@ section {
       END
     }
 
-    output "module_enabled" {
-      type        = bool
+    output "settings" {
+      type        = object(all_members_team)
       description = <<-END
-        Whether this module is enabled.
+        The outputs of the organization settings.
       END
     }
   }

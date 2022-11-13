@@ -26,6 +26,11 @@ output "projects" {
   value       = github_organization_project.project
 }
 
+output "settings" {
+  description = "The outputs of the organization settings."
+  value       = try(github_organization_settings.settings[0], {})
+}
+
 # ------------------------------------------------------------------------------
 # OUTPUT ALL INPUT VARIABLES
 # ------------------------------------------------------------------------------

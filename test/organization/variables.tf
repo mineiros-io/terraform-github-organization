@@ -61,3 +61,36 @@ variable "projects" {
     }
   ]
 }
+
+variable "settings" {
+  description = "A map of settings to apply to the organization."
+  type        = any
+  default = {
+    billing_email                                                = "hello@mineiros.io"
+    company                                                      = "Mineiros"
+    blog                                                         = "https://blog.mineiros.io"
+    email                                                        = "hello@mineiros.io"
+    twitter_username                                             = "mineirosio"
+    location                                                     = "Berlin"
+    name                                                         = "Terraform Tests"
+    description                                                  = "This Organization is just used to run some Terraform tests for https://github.com/mineiros-io"
+    has_organization_projects                                    = true
+    has_repository_projects                                      = true
+    default_repository_permission                                = "read"
+    members_can_create_repositories                              = false
+    members_can_create_public_repositories                       = false
+    members_can_create_private_repositories                      = false
+    members_can_create_internal_repositories                     = false
+    members_can_create_pages                                     = false
+    members_can_create_public_pages                              = false
+    members_can_create_private_pages                             = false
+    members_can_fork_private_repositories                        = false
+    web_commit_signoff_required                                  = false
+    advanced_security_enabled_for_new_repositories               = false
+    dependabot_alerts_enabled_for_new_repositories               = false
+    dependabot_security_updates_enabled_for_new_repositories     = false
+    dependency_graph_enabled_for_new_repositories                = false
+    secret_scanning_enabled_for_new_repositories                 = false
+    secret_scanning_push_protection_enabled_for_new_repositories = false
+  }
+}

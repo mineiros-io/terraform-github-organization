@@ -3,7 +3,7 @@
 [![Build Status](https://github.com/mineiros-io/terraform-github-organization/workflows/CI/CD%20Pipeline/badge.svg)](https://github.com/mineiros-io/terraform-github-organization/actions)
 [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/mineiros-io/terraform-github-organization.svg?label=latest&sort=semver)](https://github.com/mineiros-io/terraform-github-organization/releases)
 [![Terraform Version](https://img.shields.io/badge/terraform-1.x-623CE4.svg?logo=terraform)](https://github.com/hashicorp/terraform/releases)
-[![Github Provider Version](https://img.shields.io/badge/GH-4.x-F8991D.svg?logo=terraform)](https://github.com/terraform-providers/terraform-provider-github/releases)
+[![Github Provider Version](https://img.shields.io/badge/GH-5.x-F8991D.svg?logo=terraform)](https://github.com/terraform-providers/terraform-provider-github/releases)
 [![Join Slack](https://img.shields.io/badge/slack-@mineiros--community-f32752.svg?logo=slack)](https://join.slack.com/t/mineiros-community/shared_invite/zt-ehidestg-aLGoIENLVs6tvwJ11w9WGg)
 
 # terraform-github-organization
@@ -12,7 +12,7 @@ A [Terraform] module that acts as a wrapper around the Terraform
 [GitHub provider](https://www.terraform.io/docs/providers/github/index.html) and offers a more convenient and tested way
 to manage GitHub Organizations following best practices.
 
-**_This module supports Terraform v1.x and is compatible with the Official Terraform GitHub Provider v4.x from `integrations/github`._**
+**_This module supports Terraform v1.x and is compatible with the Official Terraform GitHub Provider v5.x from `integrations/github`._**
 
 **Attention: This module is incompatible with the Hashicorp GitHub Provider! The latest version of this module supporting `hashicorp/github` provider is `~> 0.6.0`**
 
@@ -55,7 +55,9 @@ For details please see [https://mineiros.io/github-as-code][github-as-code].
   Organization Members,
   Organization Owners (Admins),
   Organization Projects,
-  Blocked Users
+  Blocked Users,
+  Manage Organization Settings
+
 
 - **Extended Module Features**:
   Change organization member roles without removing and re-inviting users,
@@ -70,9 +72,39 @@ To quickly start managing your GitHub Organization with Terraform:
 ```hcl
 module "organization" {
   source  = "mineiros-io/organization/github"
-  version = "~> 0.7.0"
+  version = "~> 0.9.0"
 
   create_all_members_team = true
+
+  settings = {
+    billing_email                                                = "hello@mineiros.io"
+    company                                                      = "Mineiros"
+    blog                                                         = "https://blog.mineiros.io"
+    email                                                        = "hello@mineiros.io"
+    twitter_username                                             = "mineirosio"
+    location                                                     = "Berlin"
+    name                                                         = "Terraform Tests"
+    description                                                  = "This Organization is just used to run some Terraform tests for https://github.com/mineiros-io"
+    has_organization_projects                                    = true
+    has_repository_projects                                      = true
+    default_repository_permission                                = "read"
+    members_can_create_repositories                              = false
+    members_can_create_public_repositories                       = false
+    members_can_create_private_repositories                      = false
+    members_can_create_internal_repositories                     = false
+    members_can_create_pages                                     = false
+    members_can_create_public_pages                              = false
+    members_can_create_private_pages                             = false
+    members_can_fork_private_repositories                        = false
+    web_commit_signoff_required                                  = false
+    advanced_security_enabled_for_new_repositories               = false
+    dependabot_alerts_enabled_for_new_repositories               = false
+    dependabot_security_updates_enabled_for_new_repositories     = false
+    dependency_graph_enabled_for_new_repositories                = false
+    secret_scanning_enabled_for_new_repositories                 = false
+    secret_scanning_push_protection_enabled_for_new_repositories = false
+  }
+
 
   members = [
     "a-user",
@@ -116,6 +148,147 @@ terraform {
 See [variables.tf] and [examples/] for details and use-cases.
 
 ### Top-level Arguments
+
+- [**`settings`**](#var-settings): *(Optional `object(settings)`)*<a name="var-settings"></a>
+
+  A map of settings for the GitHub organization.
+
+  Default is `{"fixed_response":{"content_type":"plain/text","message_body":"Nothing to see here!","status_code":418}}`.
+
+  The `settings` object accepts the following attributes:
+
+  - [**`billing_email`**](#attr-settings-billing_email): *(**Required** `string`)*<a name="attr-settings-billing_email"></a>
+
+    The billing email address for the organization.
+
+  - [**`email`**](#attr-settings-email): *(Optional `string`)*<a name="attr-settings-email"></a>
+
+    The email address for the organization.
+
+  - [**`name`**](#attr-settings-name): *(Optional `string`)*<a name="attr-settings-name"></a>
+
+    The name for the organization.
+
+  - [**`description`**](#attr-settings-description): *(Optional `string`)*<a name="attr-settings-description"></a>
+
+    The description for the organization.
+
+  - [**`company_name`**](#attr-settings-company_name): *(Optional `string`)*<a name="attr-settings-company_name"></a>
+
+    The company name for the organization.
+
+  - [**`blog`**](#attr-settings-blog): *(Optional `string`)*<a name="attr-settings-blog"></a>
+
+    The blog URL for the organization.
+
+  - [**`twitter_username`**](#attr-settings-twitter_username): *(Optional `string`)*<a name="attr-settings-twitter_username"></a>
+
+    The Twitter username for the organization.
+
+  - [**`location`**](#attr-settings-location): *(Optional `string`)*<a name="attr-settings-location"></a>
+
+    The location for the organization.
+
+  - [**`has_organization_projects`**](#attr-settings-has_organization_projects): *(Optional `bool`)*<a name="attr-settings-has_organization_projects"></a>
+
+    Whether or not organization projects are enabled for the organization.
+
+    Default is `true`.
+
+  - [**`has_repository_projects`**](#attr-settings-has_repository_projects): *(Optional `bool`)*<a name="attr-settings-has_repository_projects"></a>
+
+    Whether or not repository projects are enabled for the organization.
+
+    Default is `true`.
+
+  - [**`default_repository_permission`**](#attr-settings-default_repository_permission): *(Optional `string`)*<a name="attr-settings-default_repository_permission"></a>
+
+    The default permission for organization members to create new repositories.
+    Can be one of `read`, `write`, `admin`, or `none`.
+
+  - [**`members_can_create_repositories`**](#attr-settings-members_can_create_repositories): *(Optional `bool`)*<a name="attr-settings-members_can_create_repositories"></a>
+
+    Whether or not organization members can create new repositories.
+
+    Default is `false`.
+
+  - [**`members_can_create_public_repositories`**](#attr-settings-members_can_create_public_repositories): *(Optional `bool`)*<a name="attr-settings-members_can_create_public_repositories"></a>
+
+    Whether or not organization members can create new public repositories.
+
+    Default is `true`.
+
+  - [**`members_can_create_private_repositories`**](#attr-settings-members_can_create_private_repositories): *(Optional `bool`)*<a name="attr-settings-members_can_create_private_repositories"></a>
+
+    Whether or not organization members can create new private repositories.
+
+    Default is `false`.
+
+  - [**`members_can_create_internal_repositories`**](#attr-settings-members_can_create_internal_repositories): *(Optional `bool`)*<a name="attr-settings-members_can_create_internal_repositories"></a>
+
+    Whether or not organization members can create new internal repositories. For Enterprise Organizations only.
+
+    Default is `false`.
+
+  - [**`members_can_create_pages`**](#attr-settings-members_can_create_pages): *(Optional `bool`)*<a name="attr-settings-members_can_create_pages"></a>
+
+    Whether or not organization members can create new pages.
+
+    Default is `false`.
+
+  - [**`members_can_create_public_pages`**](#attr-settings-members_can_create_public_pages): *(Optional `bool`)*<a name="attr-settings-members_can_create_public_pages"></a>
+
+    Whether or not organization members can create new public pages.
+
+    Default is `false`.
+
+  - [**`members_can_fork_private_repositories`**](#attr-settings-members_can_fork_private_repositories): *(Optional `bool`)*<a name="attr-settings-members_can_fork_private_repositories"></a>
+
+    Whether or not organization members can fork private repositories.
+
+    Default is `false`.
+
+  - [**`web_commit_signoff_required`**](#attr-settings-web_commit_signoff_required): *(Optional `bool`)*<a name="attr-settings-web_commit_signoff_required"></a>
+
+    Whether or not commit signatures are required for commits to the organization.
+
+    Default is `false`.
+
+  - [**`advanced_security_enabled_for_new_repositories`**](#attr-settings-advanced_security_enabled_for_new_repositories): *(Optional `bool`)*<a name="attr-settings-advanced_security_enabled_for_new_repositories"></a>
+
+    Whether or not advanced security is enabled for new repositories.
+
+    Default is `false`.
+
+  - [**`dependabot_alerts_enabled_for_new_repositories`**](#attr-settings-dependabot_alerts_enabled_for_new_repositories): *(Optional `bool`)*<a name="attr-settings-dependabot_alerts_enabled_for_new_repositories"></a>
+
+    Whether or not dependabot alerts are enabled for new repositories.
+
+    Default is `false`.
+
+  - [**`dependabot_security_updates_enabled_for_new_repositories`**](#attr-settings-dependabot_security_updates_enabled_for_new_repositories): *(Optional `bool`)*<a name="attr-settings-dependabot_security_updates_enabled_for_new_repositories"></a>
+
+    Whether or not dependabot security updates are enabled for new repositories.
+
+    Default is `false`.
+
+  - [**`dependency_graph_enabled_for_new_repositories`**](#attr-settings-dependency_graph_enabled_for_new_repositories): *(Optional `bool`)*<a name="attr-settings-dependency_graph_enabled_for_new_repositories"></a>
+
+    Whether or not dependency graph is enabled for new repositories.
+
+    Default is `false`.
+
+  - [**`secret_scanning_enabled_for_new_repositories`**](#attr-settings-secret_scanning_enabled_for_new_repositories): *(Optional `bool`)*<a name="attr-settings-secret_scanning_enabled_for_new_repositories"></a>
+
+    Whether or not secret scanning is enabled for new repositories.
+
+    Default is `false`.
+
+  - [**`secret_scanning_push_protection_enabled_for_new_repositories`**](#attr-settings-secret_scanning_push_protection_enabled_for_new_repositories): *(Optional `bool`)*<a name="attr-settings-secret_scanning_push_protection_enabled_for_new_repositories"></a>
+
+    Whether or not secret scanning push protection is enabled for new repositories.
+
+    Default is `false`.
 
 - [**`blocked_users`**](#var-blocked_users): *(Optional `set(string)`)*<a name="var-blocked_users"></a>
 
@@ -224,9 +397,9 @@ The following attributes are exported by the module:
 
   The outputs of the all members team that contains all members of your organization.
 
-- [**`module_enabled`**](#output-module_enabled): *(`bool`)*<a name="output-module_enabled"></a>
+- [**`settings`**](#output-settings): *(`object(all_members_team)`)*<a name="output-settings"></a>
 
-  Whether this module is enabled.
+  The outputs of the organization settings.
 
 ## External Documentation
 

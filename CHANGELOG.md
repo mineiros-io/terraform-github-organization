@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.0]
+
+### BREAKING CHANGES
+
+- Drop support for Terraform GitHub Provider `4.x`
+- Require Terraform GitHub Provider version `5.3` and above to support `github_organization_settings` resource
+
+### Added
+
+- Add support for organization settings by implementing the `github_organization_settings` resource
+
 ## [0.8.0]
 
 ### Added
@@ -161,7 +172,8 @@ After you've migrated the state, please run
 - This is the initial release of our GitHub Organization module with support
   for managing GitHub Organizations, Members and Blocked Users.
 
-[unreleased]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.8.0...HEAD
+[unreleased]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.9.0...HEAD
+[0.9.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.8.0...v0.9.0
 [0.8.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/mineiros-io/terraform-github-organization/compare/v0.5.0...v0.6.0
