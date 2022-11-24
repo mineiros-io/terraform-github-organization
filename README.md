@@ -74,7 +74,7 @@ module "organization" {
   source  = "mineiros-io/organization/github"
   version = "~> 0.9.0"
 
-  create_all_members_team = true
+  all_members_team_name = "Mineiros"
 
   settings = {
     billing_email                                                = "hello@mineiros.io"
